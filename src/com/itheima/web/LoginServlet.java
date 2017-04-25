@@ -37,31 +37,16 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}
-		//4.登录用户重定向到主页
+		
 		request.getSession().setAttribute("user", user);
-		
-		//--处理记住用户名
-		if("true".equals(request.getParameter("remname"))){
-			Cookie remnameC = new Cookie("remname",URLEncoder.encode(user.getUsername(),"utf-8"));
-			remnameC.setPath("/");
-			remnameC.setMaxAge(3600*24*30);
-			response.addCookie(remnameC);
-		}else{
-			Cookie remnameC = new Cookie("remname","");
-			remnameC.setPath("/");
-			remnameC.setMaxAge(0);
-			response.addCookie(remnameC);
+				
+		if(user.getUsername().equals("admin")){
+			response.sendRedirect("/admin.jsp");
+			return;
 		}
-		
-		//--处理30天内自动登陆
-		if("true".equals(request.getParameter("autologin"))){
-			Cookie autologinC = new Cookie("autologin",URLEncoder.encode(user.getUsername()+":"+user.getPassword(),"utf-8"));
-			autologinC.setPath("/");
-			autologinC.setMaxAge(3600*24*30);
-			response.addCookie(autologinC);
-		}
-		
-		response.sendRedirect("/index.jsp");
+			
+			
+		response.sendRedirect("/user.jsp");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

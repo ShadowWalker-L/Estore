@@ -21,39 +21,7 @@ import com.itheima.domain.User;
 public class PrivilegeFilter implements Filter {
 	private List<String> admin_list = new ArrayList<String>();
 	private List<String> user_list = new ArrayList<String>();
-	public void destroy() {
-
-	}
-
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse resp = (HttpServletResponse) response;
-		String uri = req.getRequestURI();
-		
-		if(admin_list.contains(uri) || user_list.contains(uri)){
-			//说明当前资源需要权限
-			if(req.getSession(false)==null || req.getSession().getAttribute("user")=="null"){
-				response.getWriter().write("当前资源需要权限,请先登录!");
-				return;
-			}
-			User user = (User) req.getSession().getAttribute("user");
-			
-			if(admin_list.contains(uri) && "admin".equals(user.getRole())){
-				chain.doFilter(request, response);
-			}else if(user_list.contains(uri) && "user".equals(user.getRole())){
-				chain.doFilter(request, response);
-			}else{
-				throw new RuntimeException("您不具有对应的权限!!!");
-			}
-		}else{
-			//不需要权限
-			chain.doFilter(request, response);
-		}
-		
-		
-	}
-
+	
 	public void init(FilterConfig filterConfig) throws ServletException {
 		ServletContext context = filterConfig.getServletContext();
 		try {
@@ -72,5 +40,37 @@ public class PrivilegeFilter implements Filter {
 			e.printStackTrace();
 		}
 	}
+	
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
+		
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
+		String uri = req.getRequestURI();
+		
+		if(admin_list.contains(uri) || user_list.contains(uri)){
+			//说明当前资源需要权限
+			if(req.getSession(false)==null || req.getSession().getAttribute("user")=="null"){
+				response.getWriter().write("当前资源需要权限,请先登录!");
+				return;
+			}
+			User user = (User) req.getSession().getAttribute("user");
+			
+			if (admin_list.contains(uri) && "admin".equals(user.getRole())){
+				chain.doFilter(request, response);
+			}else if(user_list.contains(uri) && "user".equals(user.getRole())){
+				chain.doFilter(request, response);
+			}else{
+				throw new RuntimeException("您不具有对应的权限!!!");
+			}
+		}else{
+			//不需要权限
+			chain.doFilter(request, response);
+		}
+	}
+	
+	public void destroy() {
+	}
 
+	
 }

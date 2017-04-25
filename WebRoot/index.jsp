@@ -6,19 +6,10 @@
   </head>
   <body>
   	<h1>Estore</h1><hr>
-  	<c:if test="${sessionScope.user == null}">
+  	
   		欢迎光临,游客
   		<a href="/regist.jsp">注册</a>
   		<a href="/login.jsp">登录</a>
-  	</c:if>
-  	<c:if test="${sessionScope.user != null}">
-  		欢迎回来,${sessionScope.user.username }
-  		<a href="/addProd.jsp">添加商品</a>
-  		<a href="/ProdListServlet">商品列表</a>
-  		<a href="/cart.jsp">查看购物车</a>
-  		<a href="/OrderListServlet">订单查询</a>
-  		<a href="/SaleListServlet">销售榜单下载</a>
-  		<a href="/LogoutServlet">注销</a>
-  	</c:if>
+  	
   </body>
 </html>
