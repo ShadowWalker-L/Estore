@@ -40,7 +40,7 @@ public class AddprodServlet extends HttpServlet {
 		try {
 			String encode = this.getServletContext().getInitParameter("encode");
 			Map<String, String> paramMap = new HashMap<String,String>();
-			//1.ÉÏ´«Í¼Æ¬
+			//1.ä¸Šä¼ å›¾ç‰‡
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			factory.setSizeThreshold(1024*100);
 			factory.setRepository(new File(this.getServletContext().getRealPath("WEB-INF/temp")));
@@ -61,21 +61,21 @@ public class AddprodServlet extends HttpServlet {
 					UploadMsg umsg = new UploadMsg();
 					BigDecimal br = new BigDecimal(bytesRead).divide(new BigDecimal(1024),2,BigDecimal.ROUND_HALF_UP);
 					BigDecimal cl = new BigDecimal(contentLength).divide(new BigDecimal(1024),2,BigDecimal.ROUND_HALF_UP);
-					//Ê£Óà×Ö½ÚÊı
+					//å‰©ä½™å­—èŠ‚æ•°
 					BigDecimal ll = cl.subtract(br);
-					//ÉÏ´«°Ù·Ö±È
+					//ä¸Šä¼ ç™¾åˆ†æ¯”
 					BigDecimal per = br.multiply(new BigDecimal(100)).divide(cl,2,BigDecimal.ROUND_HALF_UP);
 					umsg.setPer(per.toString());
-					//ÉÏ´«ÓÃÊ±
+					//ä¸Šä¼ ç”¨æ—¶
 					Long nowTime = System.currentTimeMillis();
 					Long useTime = (nowTime - beginTime)/1000;
-					//ÉÏ´«ËÙ¶È
+					//ä¸Šä¼ é€Ÿåº¦
 					BigDecimal speed = new BigDecimal(0);
 					if(useTime!=0){
 						speed = br.divide(new BigDecimal(useTime),2,BigDecimal.ROUND_HALF_UP);
 					}
 					umsg.setSpeed(speed.toString());
-					//´óÖÂÊ£ÓàÊ±¼ä
+					//å¤§è‡´å‰©ä½™æ—¶é—´
 					BigDecimal ltime = new BigDecimal(0);
 					if(!speed.equals(new BigDecimal(0))){
 						ltime = ll.divide(speed,0,BigDecimal.ROUND_HALF_UP);
@@ -86,18 +86,18 @@ public class AddprodServlet extends HttpServlet {
 			});
 			
 			if(!fileUpload.isMultipartContent(request)){
-				throw new RuntimeException("ÇëÊ¹ÓÃÕıÈ·µÄ±íµ¥½øĞĞÉÏ´«!");
+				throw new RuntimeException("è¯·ä½¿ç”¨æ­£ç¡®çš„è¡¨å•è¿›è¡Œä¸Šä¼ !");
 			}
 	
 			List<FileItem> list = fileUpload.parseRequest(request);
 			for(FileItem item : list){
 				if(item.isFormField()){
-					//ÆÕÍ¨×Ö¶Î
+					//æ™®é€šå­—æ®µ
 					String name = item.getFieldName();
 					String value = item.getString(encode);
 					paramMap.put(name, value);
 				}else{
-					//ÎÄ¼şÉÏ´«Ïî
+					//æ–‡ä»¶ä¸Šä¼ é¡¹
 					String realname = item.getName();
 					String uuidname = UUID.randomUUID().toString()+"_"+realname;
 
@@ -123,20 +123,20 @@ public class AddprodServlet extends HttpServlet {
 					
 					item.delete();
 					
-					//--Éú³ÉËõÂÔÍ¼
+					//--ç”Ÿæˆç¼©ç•¥å›¾
 					PicUtils picu = new PicUtils(this.getServletContext().getRealPath(imgurl));
 					picu.resizeByHeight(140);
 				}
 			}
 			
-			//2.µ÷ÓÃServiceÖĞÌá¹©µÄ·½·¨,ÔÚÊı¾İ¿âÖĞÌí¼ÓÉÌÆ·
+			//2.è°ƒç”¨Serviceä¸­æä¾›çš„æ–¹æ³•,åœ¨æ•°æ®åº“ä¸­æ·»åŠ å•†å“
 			Product prod = new Product();
 			BeanUtils.populate(prod, paramMap);
 			service.addProd(prod);
 			
-			//3.ÌáÊ¾³É¹¦,»Øµ½Ö÷Ò³
-			response.getWriter().write("Ìí¼ÓÉÌÆ·³É¹¦!3Ãë»Øµ½Ö÷Ò³..");
-			response.setHeader("Refresh", "3;url=/admin.jsp");
+			//3.æç¤ºæˆåŠŸ,å›åˆ°ä¸»é¡µ
+			response.getWriter().write("æ·»åŠ å•†å“æˆåŠŸ!3ç§’å›åˆ°ä¸»é¡µ..");
+			response.setHeader("Refresh", "3;url=/index.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -18,9 +18,9 @@ public class ValiNameServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String msg = null;
 		if(service.hasName(username)){
-			msg = "{msg:'ÓÃ»§ÃûÒÑ¾­´æÔÚ!',stat:1}";
+			msg = "{msg:'ç”¨æˆ·åå·²ç»å­˜åœ¨!',stat:1}";
 		}else{
-			msg = "{msg:'ÓÃ»§Ãû¿ÉÒÔÊ¹ÓÃ!',stat:0}";
+			msg = "{msg:'ç”¨æˆ·åå¯ä»¥ä½¿ç”¨!',stat:0}";
 		}
 		response.getWriter().write(msg);
 	}

@@ -15,12 +15,9 @@ public class ActiveServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UserService service = BasicFactory.getFactory().getService(UserService.class);
-		//1.»ñÈ¡¼¤»îÂë
 		String activecode = request.getParameter("activecode");
-		//2.µ÷ÓÃService¼¤»îÓÃ»§
 		service.acitveUser(activecode);
-		//3.ÌáÊ¾¼¤»î³É¹¦»Øµ½Ö÷Ò³
-		response.getWriter().write("¹§Ï²Äú¼¤»î³É¹¦,3Ãëºó»Øµ½Ö÷Ò³....");
+		response.getWriter().write("æ­å–œæ‚¨æ¿€æ´»æˆåŠŸ,3ç§’åå›åˆ°ä¸»é¡µ....");
 		response.setHeader("Refresh", "3;url=/index.jsp");
 	}
 

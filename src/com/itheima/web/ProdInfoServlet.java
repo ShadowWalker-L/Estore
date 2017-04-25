@@ -16,13 +16,13 @@ public class ProdInfoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ProdService service = BasicFactory.getFactory().getService(ProdService.class);
-		//1.»ñÈ¡Òª²éÑ¯µÄÉÌÆ·id
+		//1.è·å–è¦æŸ¥è¯¢çš„å•†å“id
 		String id = request.getParameter("id");
-		//2.µ÷ÓÃServiceÖĞµÄ·½·¨²éÑ¯ÖÆ¶¨idµÄÉÌÆ·
+		//2.è°ƒç”¨Serviceä¸­çš„æ–¹æ³•æŸ¥è¯¢åˆ¶å®šidçš„å•†å“
 		Product prod = service.findProdById(id);
-		//3.½«²éµ½µÄÉÌÆ·´æÈërequestÓòºó´øµ½Ò³ÃæÏÔÊ¾
+		//3.å°†æŸ¥åˆ°çš„å•†å“å­˜å…¥requeståŸŸåå¸¦åˆ°é¡µé¢æ˜¾ç¤º
 		if(prod==null){
-			throw new RuntimeException("ÕÒ²»µ½¸ÃÉÌÆ·!!!");
+			throw new RuntimeException("æ‰¾ä¸åˆ°è¯¥å•†å“!!!");
 		}else{
 			request.setAttribute("prod", prod);
 			request.getRequestDispatcher("/prodInfo.jsp").forward(request, response);

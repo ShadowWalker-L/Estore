@@ -17,9 +17,9 @@ public class ProdListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ProdService service = BasicFactory.getFactory().getService(ProdService.class);
-		//1.µ÷ÓÃService²éÑ¯ËùÓĞÉÌÆ·
+		//1.è°ƒç”¨ServiceæŸ¥è¯¢æ‰€æœ‰å•†å“
 		List<Product> list = service.findAllProd();
-		//2.½«ËùÓĞÉÌÆ·ĞÅÏ¢´æÈërequestÓòºó´øµ½Ò³ÃæÕ¹Ê¾
+		//2.å°†æ‰€æœ‰å•†å“ä¿¡æ¯å­˜å…¥requeståŸŸåå¸¦åˆ°é¡µé¢å±•ç¤º
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/prodList.jsp").forward(request, response);
 	}

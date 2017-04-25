@@ -16,7 +16,7 @@ public class Callback extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// »ñµÃ»Øµ÷ËùÓĞÊı¾İ
+		// è·å¾—å›è°ƒæ‰€æœ‰æ•°æ®
 		String p1_MerId = request.getParameter("p1_MerId");
 		String r0_Cmd = request.getParameter("r0_Cmd");
 		String r1_Code = request.getParameter("r1_Code");
@@ -33,14 +33,14 @@ public class Callback extends HttpServlet {
 		String rp_PayDate = request.getParameter("rp_PayDate");
 		String rq_CardNo = request.getParameter("rq_CardNo");
 		String ru_Trxtime = request.getParameter("ru_Trxtime");
-		// Éí·İĞ£Ñé --- ÅĞ¶ÏÊÇ²»ÊÇÖ§¸¶¹«Ë¾Í¨ÖªÄã
+		// èº«ä»½æ ¡éªŒ --- åˆ¤æ–­æ˜¯ä¸æ˜¯æ”¯ä»˜å…¬å¸é€šçŸ¥ä½ 
 		String hmac = request.getParameter("hmac");
 		
 		if(PaymentUtil.verifyCallback(hmac, p1_MerId, r0_Cmd, r1_Code, r2_TrxId, r3_Amt, r4_Cur, r5_Pid, r6_Order, r7_Uid, r8_MP, r9_BType, ResourceBundle.getBundle("merchantInfo").getString("keyValue"))){
 			
 			if("1".equals(r9_BType)){
-				//ä¯ÀÀÆ÷ÖØ¶¨Ïò·ÃÎÊ,²»ÄÜÈ·ĞÅÕæµÄÖ§¸¶³É¹¦
-				response.getWriter().write("Ö§¸¶³É¹¦!!!");
+				//æµè§ˆå™¨é‡å®šå‘è®¿é—®,ä¸èƒ½ç¡®ä¿¡çœŸçš„æ”¯ä»˜æˆåŠŸ
+				response.getWriter().write("Ö§ï¿½ï¿½ï¿½É¹ï¿½!!!");
 				response.setHeader("refresh", "3;url=/index.jsp");
 				
 				OrderService service = BasicFactory.getFactory().getService(OrderService.class);
@@ -49,8 +49,8 @@ public class Callback extends HttpServlet {
 				return;
 			}
 			if("2".equals(r9_BType)){
-				//Ò×±¦µã¶ÔµãÍ¨ĞÅÍ¨ÖªÖ§¸¶³É¹¦,Ò×±¦Í¨ÖªÁË,ËµÃ÷ÕæµÄÖ§¸¶³É¹¦
-				//--ĞŞ¸Äµ±Ç°¶©µ¥µÄÖ§¸¶×´Ì¬ÎªÒÑÖ§¸¶
+				//æ˜“å®ç‚¹å¯¹ç‚¹é€šä¿¡é€šçŸ¥æ”¯ä»˜æˆåŠŸ,æ˜“å®é€šçŸ¥äº†,è¯´æ˜çœŸçš„æ”¯ä»˜æˆåŠŸ
+				//--ä¿®æ”¹å½“å‰è®¢å•çš„æ”¯ä»˜çŠ¶æ€ä¸ºå·²æ”¯ä»˜
 				OrderService service = BasicFactory.getFactory().getService(OrderService.class);
 				service.changePayState(r6_Order,1);
 				response.getWriter().write("SUCCESS");
@@ -59,7 +59,7 @@ public class Callback extends HttpServlet {
 			
 			
 		}else{
-			throw new RuntimeException("Êı¾İ±»´Û¸Ä¹ı!!!!!!!");
+			throw new RuntimeException("æ•°æ®è¢«ç¯¡æ”¹è¿‡!!!!!!!");
 		}
 		
 	}

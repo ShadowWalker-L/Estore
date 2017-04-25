@@ -26,18 +26,13 @@ public class AddOrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		OrderService service = BasicFactory.getFactory().getService(OrderService.class);
 		try {
-			//1.将订单信息存入Order bean中
 			Order order = new Order();
-			//--订单编号
 			order.setId(UUID.randomUUID().toString());
 			
-			//--支付状态
 			order.setPaystate(0);
 			
-			//--收货地址
 			BeanUtils.populate(order, request.getParameterMap());
 			
-			//--金额/将订单项信息存入order中
 			Map<Product,Integer> cartmap = (Map<Product, Integer>) request.getSession().getAttribute("cartmap");
 			double money = 0;
 			List <OrderItem> list = new ArrayList<OrderItem>();
@@ -53,18 +48,14 @@ public class AddOrderServlet extends HttpServlet {
 			order.setMoney(money);
 			order.setList(list);
 			
-			//--客户编号
 			User user = (User) request.getSession().getAttribute("user");
 			order.setUser_id(user.getId());
 			
-			//2.调用Service中添加订单的方法
 			service.addOrder(order);
 			
-			//3.清空购物车
 			cartmap.clear();
 			
-			//4.回到主页
-			response.getWriter().write("订单生成成功!请去支付!");
+			response.getWriter().write("璁㈠崟鐢熸垚鎴愬姛!璇峰幓鏀粯!");
 			response.setHeader("refresh", "3;url=/index.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();

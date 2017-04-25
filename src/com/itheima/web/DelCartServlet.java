@@ -17,13 +17,13 @@ public class DelCartServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ProdService service = BasicFactory.getFactory().getService(ProdService.class);
-		//1.»ñÈ¡ÒªÉ¾³ıµÄid,¸ù¾İid²éÕÒ³öÉÌÆ·
+		//1.è·å–è¦åˆ é™¤çš„id,æ ¹æ®idæŸ¥æ‰¾å‡ºå•†å“
 		String id = request.getParameter("id");
 		Product prod = service.findProdById(id);
-		//2.»ñÈ¡¹ºÎï³µ,É¾³ı¸ÃÉÌÆ·
+		//2.è·å–è´­ç‰©è½¦,åˆ é™¤è¯¥å•†å“
 		Map<Product,Integer> cartmap = (Map<Product, Integer>) request.getSession().getAttribute("cartmap");
 		cartmap.remove(prod);
-		//3.ÖØ¶¨Ïò»Øµ½¹ºÎï³µÒ³Ãæ
+		//3.é‡å®šå‘å›åˆ°è´­ç‰©è½¦é¡µé¢
 		response.sendRedirect("/cart.jsp");
 	}
 

@@ -20,23 +20,19 @@ public class RegistServlet extends HttpServlet {
 			throws ServletException, IOException {
 		UserService service = BasicFactory.getFactory().getService(UserService.class);
 		try{
-			//1.Ğ£ÑéÑéÖ¤Âë
 			String valistr1 = request.getParameter("valistr");
 			String valistr2 = (String) request.getSession().getAttribute("valistr");
 			if(valistr1 == null || valistr2 == null || !valistr1.equals(valistr2)){
-				request.setAttribute("msg", "<font color='red'>ÑéÖ¤Âë²»ÕıÈ·!</font>");
+				request.setAttribute("msg", "<font color='red'>éªŒè¯ç ä¸æ­£ç¡®!</font>");
 				request.getRequestDispatcher("/regist.jsp").forward(request, response);
 				return;
 			}
-			//2.·â×°Êı¾İ*Ğ£ÑéÊı¾İ
 			User user = new User();
 			BeanUtils.populate(user, request.getParameterMap());	
 			user.setPassword(MD5Utils.md5(user.getPassword()));
-			//3.µ÷ÓÃService×¢²áÓÃ»§
 			service.regist(user);
 			
-			//4.»Øµ½Ö÷Ò³
-			response.getWriter().write("×¢²á³É¹¦,Çëµ½ÓÊÏäÖĞ½øĞĞ¼¤»î...");
+			response.getWriter().write("×¢æ³¨å†ŒæˆåŠŸ,è¯·åˆ°é‚®ç®±ä¸­è¿›è¡Œæ¿€æ´»...");
 			response.setHeader("Refresh", "3;url=/index.jsp");
 		}catch (Exception e) {
 			e.printStackTrace();

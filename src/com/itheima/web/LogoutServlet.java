@@ -15,7 +15,6 @@ public class LogoutServlet extends HttpServlet {
 			throws ServletException, IOException {
 		if(request.getSession(false)!=null){
 			request.getSession().invalidate();
-			//É¾³ý×Ô¶¯µÇÂ½cookie
 			Cookie autologinC = new Cookie("autologin","");
 			autologinC.setPath("/");
 			autologinC.setMaxAge(0);

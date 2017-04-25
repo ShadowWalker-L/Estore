@@ -19,12 +19,12 @@ public class OrderListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		OrderService service = BasicFactory.getFactory().getService(OrderService.class);
-		//1.»ñÈ¡ÓÃ»§id
+		//1.è·å–ç”¨æˆ·id
 		User user = (User) request.getSession().getAttribute("user");
 		int id = user.getId();
-		//2.µ÷ÓÃServiceÖĞ¸ù¾İÓÃ»§id²éÑ¯ÓÃ»§¾ßÓĞµÄ¶©µ¥µÄ·½·¨
+		//2.è°ƒç”¨Serviceä¸­æ ¹æ®ç”¨æˆ·idæŸ¥è¯¢ç”¨æˆ·å…·æœ‰çš„è®¢å•çš„æ–¹æ³•
 		List<OrderListForm> list = service.findOrders(id);
-		//3.´æÈërequestÓò´øµ½Ò³ÃæÏÔÊ¾
+		//3.å­˜å…¥requeståŸŸå¸¦åˆ°é¡µé¢æ˜¾ç¤º
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/orderList.jsp").forward(request, response);
 	}

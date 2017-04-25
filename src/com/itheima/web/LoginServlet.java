@@ -21,19 +21,16 @@ public class LoginServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UserService service = BasicFactory.getFactory().getService(UserService.class);
-		//1.»ñÈ¡ÓÃ»§ÃûÃÜÂë
 		String username = request.getParameter("username");
 		String password = MD5Utils.md5(request.getParameter("password"));
-		//2.µ÷ÓÃServiceÖĞ¸ù¾İÓÃ»§ÃûÃÜÂë²éÕÒÓÃ»§µÄ·½·¨
 		User user = service.getUserByNameAndPsw(username,password);
 		if(user == null){
-			request.setAttribute("msg", "ÓÃ»§ÃûÃÜÂë²»ÕıÈ·!");
+			request.setAttribute("msg", "ç”¨æˆ·åå¯†ç ä¸æ­£ç¡®!");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}
-		//3.¼ì²éÓÃ»§¼¤»î×´Ì¬
 		if(user.getState() == 0){
-			request.setAttribute("msg", "ÓÃ»§ÉĞÎ´¼¤»î,Çëµ½ÓÊÏäÖĞ½øĞĞ¼¤»î!");
+			request.setAttribute("msg", "ç”¨æˆ·å°šæœªæ¿€æ´»,è¯·åˆ°é‚®ç®±ä¸­è¿›è¡Œæ¿€æ´»!");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}

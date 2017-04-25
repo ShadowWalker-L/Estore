@@ -18,20 +18,18 @@ public class SaleListServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//1.µ÷ÓÃServiceÖĞ²éÑ¯ÏúÊÛ°ñµ¥µÄ·½·¨
+		//1.è°ƒç”¨Serviceä¸­æŸ¥è¯¢é”€å”®æ¦œå•çš„æ–¹æ³•
 		OrderService service = BasicFactory.getFactory().getService(OrderService.class);
 		List<SaleInfo> list = service.saleList();
-		
-		//2.½«ÏúÊÛ°ñµ¥ĞÅÏ¢×éÖ¯³Æcsv¸ñÊ½µÄÊı¾İ
+		//2.å°†é”€å”®æ¦œå•ä¿¡æ¯ç»„ç»‡ç§°csvæ ¼å¼çš„æ•°æ®
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("ÉÌÆ·±àºÅ,ÉÌÆ·Ãû³Æ,ÏúÊÛÊıÁ¿\r\n");
+		buffer.append("å•†å“ç¼–å·,å•†å“åç§°,é”€å”®æ•°é‡\r\n");
 		for(SaleInfo si : list){
 			buffer.append(si.getProd_id()+","+si.getProd_name()+","+si.getSale_num()+"\r\n");
 		}
 		String data = buffer.toString();
-		
-		//3.Ìá¹©ÏÂÔØ
-		String filename = "EstoreÏúÊÛ°ñµ¥_"+new Date().toLocaleString()+".csv";
+		//3.æä¾›ä¸‹è½½
+		String filename = "Estoreé”€å”®æ¦œå•_"+new Date().toLocaleString()+".csv";
 		response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(filename,"utf-8"));
 		response.setContentType(this.getServletContext().getMimeType(filename));
 		response.getWriter().write(data);
