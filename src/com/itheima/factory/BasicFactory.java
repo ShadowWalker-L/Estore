@@ -31,40 +31,40 @@ public class BasicFactory {
 	
 	@SuppressWarnings("unchecked")
 	/**
-	 * »ñÈ¡ServiceµÄ·½·¨
+	 * è·å–Serviceçš„æ–¹æ³•
 	 */
 	public <T extends Service> T getService(Class<T> clazz){
 		try{
-			//--¸ù¾İÅäÖÃÎÄ¼ş´´½¨¾ßÌåµÄService
+			//--æ ¹æ®é…ç½®æ–‡ä»¶åˆ›å»ºå…·ä½“çš„Service
 			String infName = clazz.getSimpleName();
 			String implName = prop.getProperty(infName);
 			final T service = (T) Class.forName(implName).newInstance();
 			
-			//--ÎªÁËÊµÏÖAOP,Éú³Éservice´úÀí,¸ù¾İ×¢½âÈ·¶¨ÔÚService·½·¨Ö´ĞĞÖ®Ç°ºÍÖ®ºó×öÒ»Ğ©²Ù×÷,±ÈÈç:ÊÂÎñ¹ÜÀí/¼ÇÂ¼ÈÕÖ¾/Ï¸Á£¶ÈÈ¨ÏŞ¿ØÖÆ....
+			//--ä¸ºäº†å®ç°AOP,ç”Ÿæˆserviceä»£ç†,æ ¹æ®æ³¨è§£ç¡®å®šåœ¨Serviceæ–¹æ³•æ‰§è¡Œä¹‹å‰å’Œä¹‹ååšä¸€äº›æ“ä½œ,æ¯”å¦‚:äº‹åŠ¡ç®¡ç†/è®°å½•æ—¥å¿—/ç»†ç²’åº¦æƒé™æ§åˆ¶....
 			T proxyService =  (T) Proxy.newProxyInstance(service.getClass().getClassLoader(), service.getClass().getInterfaces()
 				 , new InvocationHandler(){
 				
-					//¸ù¾İ×¢½â¿ØÖÆÊÂÎñ
+					//æ ¹æ®æ³¨è§£æ§åˆ¶äº‹åŠ¡
 					public Object invoke(Object proxy, Method method,Object[] args) throws Throwable {
 						
-						if(method.isAnnotationPresent(Tran.class)){//Èç¹ûÓĞ×¢½â,Ôò¹ÜÀíÊÂÎñ:
+						if(method.isAnnotationPresent(Tran.class)){//å¦‚æœæœ‰æ³¨è§£,åˆ™ç®¡ç†äº‹åŠ¡:
 							try{
-								TransactionManager.startTran();//--¿ªÆôÊÂÎñ
+								TransactionManager.startTran();//--å¼€å¯äº‹åŠ¡
 								
-								Object obj = method.invoke(service, args);//--ÕæÕıÖ´ĞĞ·½·¨
+								Object obj = method.invoke(service, args);//--çœŸæ­£æ‰§è¡Œæ–¹æ³•
 								
-								TransactionManager.commit();//--Ìá½»ÊÂÎñ
+								TransactionManager.commit();//--æäº¤äº‹åŠ¡
 								return obj;
 							}catch (InvocationTargetException e) {
-								TransactionManager.rollback();//--»Ø¹öÊÂÎñ
+								TransactionManager.rollback();//--å›æ»šäº‹åŠ¡
 								throw new RuntimeException(e.getTargetException());
 							} catch (Exception e) {
-								TransactionManager.rollback();//--»Ø¹öÊÂÎñ
+								TransactionManager.rollback();//--å›æ»šäº‹åŠ¡
 								throw new RuntimeException(e);
 							}finally{
-								TransactionManager.release();//--ÊÍ·Å×ÊÔ´
+								TransactionManager.release();//--é‡Šæ”¾èµ„æº
 							}
-						}else{//Èç¹ûÃ»ÓĞ×¢½â,Ôò²»¹ÜÀíÊÂÎñ,Ö±½ÓÖ´ĞĞ·½·¨
+						}else{//å¦‚æœæ²¡æœ‰æ³¨è§£,åˆ™ä¸ç®¡ç†äº‹åŠ¡,ç›´æ¥æ‰§è¡Œæ–¹æ³•
 							return method.invoke(service, args);
 						}
 					}
@@ -80,7 +80,7 @@ public class BasicFactory {
 	}
 	
 	/**
-	 * »ñÈ¡daoµÄ·½·¨
+	 * è·å–daoçš„æ–¹æ³•
 	 */
 	public <T extends Dao> T getDao(Class<T> clazz){
 		try{

@@ -144,6 +144,13 @@
     <servlet-name>UploadMsgServlet</servlet-name>
     <servlet-class>com.itheima.web.UploadMsgServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ProdManageServlet</servlet-name>
+    <servlet-class>com.itheima.web.ProdManageServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -253,6 +260,10 @@
   <servlet-mapping>
     <servlet-name>UploadMsgServlet</servlet-name>
     <url-pattern>/UploadMsgServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProdManageServlet</servlet-name>
+    <url-pattern>/ProdManageServlet</url-pattern>
   </servlet-mapping>
 	<!-- Servlet配置结束 -->
 	

@@ -7,6 +7,7 @@
   <body>
     hello ${sessionScope.user.username } <br>
     <a href="/addProd.jsp">添加商品</a>
+    <a href="/ProdManageServlet">商品管理</a>
     <a href="/SaleListServlet">销售榜单下载</a>
   	<a href="/LogoutServlet">注销</a>
   </body>
