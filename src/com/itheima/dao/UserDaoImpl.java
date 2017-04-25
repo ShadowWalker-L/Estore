@@ -9,10 +9,12 @@ import com.itheima.util.TransactionManager;
 public class UserDaoImpl implements UserDao {
 
 	public void addUser(User user) {
-		String sql = "insert into users values(null,?,?,?,?,?,?,?,null)";
+		String userSql = "insert into users values(null,?,?,?,?,?,?,?,null)";
+		String roleSql = "insert into roles values(null,?,?)";
 		try{
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql,user.getUsername(),user.getPassword(),user.getNickname(),user.getEmail(),user.getRole(),user.getState(),user.getActivecode());
+			runner.update(userSql,user.getUsername(),user.getPassword(),user.getNickname(),user.getEmail(),user.getRole(),user.getState(),user.getActivecode());
+			runner.update(roleSql, user.getUsername(), user.getRole());
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

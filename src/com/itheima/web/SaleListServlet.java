@@ -21,6 +21,7 @@ public class SaleListServlet extends HttpServlet {
 		//1.调用Service中查询销售榜单的方法
 		OrderService service = BasicFactory.getFactory().getService(OrderService.class);
 		List<SaleInfo> list = service.saleList();
+		
 		//2.将销售榜单信息组织称csv格式的数据
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("商品编号,商品名称,销售数量\r\n");
@@ -28,6 +29,7 @@ public class SaleListServlet extends HttpServlet {
 			buffer.append(si.getProd_id()+","+si.getProd_name()+","+si.getSale_num()+"\r\n");
 		}
 		String data = buffer.toString();
+		
 		//3.提供下载
 		String filename = "Estore销售榜单_"+new Date().toLocaleString()+".csv";
 		response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(filename,"utf-8"));
