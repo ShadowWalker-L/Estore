@@ -25,7 +25,7 @@ public class AddCartServlet extends HttpServlet {
 			Map<Product,Integer> cartmap = (Map<Product, Integer>) request.getSession().getAttribute("cartmap");
 			cartmap.put(prod, cartmap.containsKey(prod)?cartmap.get(prod)+1 : 1);
 		}
-		response.sendRedirect("/cart.jsp");
+		response.sendRedirect(request.getContextPath()+"/cart.jsp");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

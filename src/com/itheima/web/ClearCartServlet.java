@@ -18,7 +18,7 @@ public class ClearCartServlet extends HttpServlet {
 			throws ServletException, IOException {
 		Map<Product,Integer> cartmap = (Map<Product, Integer>) request.getSession().getAttribute("cartmap");
 		cartmap.clear();
-		response.sendRedirect("/cart.jsp");
+		response.sendRedirect(request.getContextPath()+"/cart.jsp");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

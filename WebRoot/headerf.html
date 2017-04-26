@@ -1,0 +1,74 @@
+<header>
+    <div id="header_content">
+        <div id="cart_info">
+
+            <c:if test="${sessionScope.user==null}">
+            <div>
+                <a class="account" href="/login.jsp">
+                    <span>Login</span>
+                </a>
+                &nbsp;|&nbsp; 
+                <a class="account" href="/regist.jsp">
+                    <span>Register</span>
+                </a>
+                &nbsp;|&nbsp; 
+            </div>
+            </c:if>
+            <c:if test="${sessionScope.user!=null}">
+            <div>
+                <span><span >Welcome</span>, <a class="my-account" href="/account" value="${sessionScope.user.name}"></a></span>
+                <!-- <span th:text=" (${customer.averageHeatRatingBought})"></span> -->
+                &nbsp;|&nbsp;                               
+                <a href="/logout">
+                    <span >Logout</span>
+                </a>
+                &nbsp;|&nbsp; 
+            </div>
+            </c:if>
+
+
+            <a id="cartLink" class="modalcart" href="/cart">
+                <img src="/img/shopping_cart.png" alt="Shopping Cart Icon" />
+                &nbsp; 
+                <span id="headerCartItemWordSingular_i18n" style="display: none;"/>
+                <span id="headerCartItemWordPlural_i18n" style="display: none;" />
+                <span class="headerCartItemsCount" />
+                <span class="headerCartItemsCountWord">件</span>
+            </a>
+
+        </div>
+
+        <div id="languages">
+            <span id="selectedLocale" style="display: none" />
+
+            <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'en_US')">
+                <img id="en_US" src="img/flags/United-States.png" src="/img/flags/United-States.png" alt="United States" title="English" />
+            </a>
+
+            <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'en_GB')">
+                <img id="en_GB" src="img/flags/United-Kingdom.png" blc:src="/img/flags/United-Kingdom.png" alt="United Kingdom" title="English (UK)"/>
+            </a>
+
+            <a  href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'zh_CN')">
+                <img id="es_MX" src="img/flags/Mexico.png" src="/img/flags/China.png" alt="China" title="Chinese (China)"/>
+            </a>
+
+            <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'es_ES')">
+                <img id="es_ES" src="img/flags/Mexico.png" blc:src="/img/flags/Spain.png" alt="Spain" title="Spanish (Spain)"/>
+            </a>
+            <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'fr_FR')">
+                <img id="fr_FR" src="img/flags/Mexico.png" blc:src="/img/flags/France.png" alt="France" title="French (France)" />
+            </a>
+
+        </div>
+
+        <div id="logo"><h1><a href="/">welcome</a></h1></div>
+        
+        <div id="search">
+            <form action="/search" method="GET">
+            <input type="search" class="search" name="q" value="query" />
+            <input type="submit" id="search_button" value="go" />
+            </form>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,57 @@
+
+
+<table id="cart_products">
+    <thead>
+        <tr>
+            <th colspan="2"><span>name</span></th>
+            <th><span>Quantity</span></th>
+            <th> <span>Price</span> <span class="small">(each)</span></th>
+            <th><span>Total</span></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<c:set var="money" value="0" />
+    	<c:forEach items="${sessionScope.cartmap}" var="entry">
+        <tr>
+            <td>
+                <img src="${pageContext.request.contextPath}/ImgServlet?imgurl=${entry.key.imgurls }" width="60" alt="${entry.key.name}+'_picture'" />
+            </td>
+            <td class="name">
+                <ul>
+                <li>
+                 <a  href="#" inline="text">
+                  ${entry.key.name }
+                </a></li>
+                    <li><span>category :${entry.key.category }</span></li>
+                    <li><span>State of Inventory:<br/>
+                    <c:if test="${entry.value<=entry.key.pnum}">
+                       <font color="blue">IN STOCK</font>
+                    </c:if>
+                    <c:if test="${entry.value>entry.key.pnum}">
+                        <font color="red">OUT OF STOCK</font>
+                    </c:if>
+                    </span>
+                    </li>
+                </ul>
+            </td>
+            
+            <td align="center">
+                <form method="POST" onsubmit="return changeNum()" action="${pageContext.request.contextPath}/cart/updateQuantity">
+                    <input type="hidden" name="productId" value="${entry.key.id }" />
+                    <input type="number" id="quantity" name="quantity" class="quantityInput" style="width:30px" value="${entry.value }" maxlength="3" /><br />
+                    <input type="submit" class="updateQuantity" value="update" />
+                </form>
+                <a class="cartLinkBtn remove_from_cart" href="${pageContext.request.contextPath}/DelCartServlet?id=${entry.key.id }"><span>Remove</span></a>
+            </td>
+            
+            
+            
+            <td align="center" price="*{getPriceBeforeAdjustments(true)}">${entry.key.price }RMB</td>
+            
+            
+            <td align="center" class="value">${entry.key.price * entry.value }RMB</td>
+            <c:set var="money" value="${money + entry.key.price * entry.value }"/>
+        </tr>
+        </c:forEach>
+    </tbody>
+</table>

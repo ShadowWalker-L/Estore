@@ -1,14 +1,31 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-  </head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+<%@include file="/head.html" %>
+ <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ </head> 
+ 
+ 
+ <body> 
+ 
+<%@include file="/header.html" %>
+
   
-  <body>
-    hello ${sessionScope.user.username } <br>
-    <a href="/addProd.jsp">添加商品</a>
-    <a href="/ProdManageServlet">商品管理</a>
-    <a href="/SaleListServlet">销售榜单下载</a>
-  	<a href="/LogoutServlet">注销</a>
-  </body>
+  <div id="content" class="width_setter group" role="main">
+  
+
+
+  <%@include file="/nav1.html" %>
+
+
+  
+   <div id="account" style="margin-top:30px;width:400px;height:325px"> 
+
+   
+   </div>
+
+   <%@include file="/footer.html" %>
+ </body>
 </html>

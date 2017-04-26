@@ -1,0 +1,29 @@
+<footer class="group">
+    <div id="blc_brand">
+        <a href="#"  >
+            <img src="img/broadleaf-seal.png" alt="picture_from_Josh" />
+            <h4><span>Powered by Josh and Michael</span></h4>
+            <br />
+        </a>
+        <p>&copy; <span>Copyright 2013 Josh and Michael</span><br /></p>
+    </div>
+
+    <div th:remove="all">
+        <!--
+            Include this template at the bottom of a page (automatically included by partials/footer.html
+            to gain access to jQuery and other plugins used throughout the site.
+            
+            We will attempt to load the jQuery library from Google's CDN, but fallback on our own provided
+            jQuery if necessary.
+            
+            Other than this jQuery loading script, no other scripts should be defined inline.
+        -->
+    </div>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script inline="text">
+        //<![CDATA[
+    window.jQuery || document.write('<script src="[[/js/lib/jquery-1.9.1.js]]"><\/script>');
+        //]]>
+    </script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</footer>

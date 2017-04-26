@@ -29,7 +29,7 @@ public class SaleListServlet extends HttpServlet {
 		}
 		String data = buffer.toString();
 		//3.提供下载
-		String filename = "Estore销售榜单_"+new Date().toLocaleString()+".csv";
+		String filename = "销售榜单_"+new Date().toLocaleString()+".csv";
 		response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(filename,"utf-8"));
 		response.setContentType(this.getServletContext().getMimeType(filename));
 		response.getWriter().write(data);

@@ -35,7 +35,7 @@
   	</script>
   </head>
   <body style="text-align: center;">
-  	<h1>Estore_添加商品</h1><hr>
+  	<h1>添加商品</h1><hr>
   	<form action="/AddprodServlet" method="POST" enctype="multipart/form-data" onsubmit="return checkData()">
   		<table border="1">
   			<tr>

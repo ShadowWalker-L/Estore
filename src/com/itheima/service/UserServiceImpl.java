@@ -18,17 +18,17 @@ public class UserServiceImpl implements UserService {
 	private UserDao dao = BasicFactory.getFactory().getDao(UserDao.class);
 	public void regist(User user) {
 		try{
-			//1.Ğ£ÑéÓÃ»§ÃûÊÇ·ñÒÑ¾­´æÔÚ
+			//1.æ ¡éªŒç”¨æˆ·åæ˜¯å¦å·²ç»å­˜åœ¨
 			if(dao.findUserByName(user.getUsername())!=null){
-				throw new RuntimeException("ÓÃ»§ÃûÒÑ¾­´æÔÚ!!");
+				throw new RuntimeException("ç”¨æˆ·åå·²ç»å­˜åœ¨!!");
 			}
-			//2.µ÷ÓÃdaoÖĞµÄ·½·¨Ìí¼ÓÓÃ»§µ½Êı¾İ¿â
+			//2.è°ƒç”¨daoä¸­çš„æ–¹æ³•æ·»åŠ ç”¨æˆ·åˆ°æ•°æ®åº“
 			user.setRole("user");
 			user.setState(0);
 			user.setActivecode(UUID.randomUUID().toString());
 			dao.addUser(user);
 			
-			//3.·¢ËÍ¼¤»îÓÊ¼ş
+			//3.å‘é€æ¿€æ´»é‚®ä»¶
 		
 			Properties prop = new Properties();
 			prop.setProperty("mail.transport.protocol", "smtp");
@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
 			Message msg = new MimeMessage(session);
 			msg.setFrom(new InternetAddress("admin@gzhu.cn"));
 			msg.setRecipient(RecipientType.TO, new InternetAddress(user.getEmail()));
-			msg.setSubject(user.getUsername()+",À´×ÔestoreµÄ¼¤»îÓÊ¼ş");
-			msg.setText(user.getUsername()+",µã»÷ÈçÏÂÁ¬½Ó¼¤»îÕË»§,Èç¹û²»ÄÜµã»÷Çë¸´ÖÆµ½ä¯ÀÀÆ÷µØÖ·À¸·ÃÎÊ:http://www.estore.com/ActiveServlet?activecode="+user.getActivecode());
+			msg.setSubject(user.getUsername()+",æ¥è‡ªestoreçš„æ¿€æ´»é‚®ä»¶");
+			msg.setText(user.getUsername()+",ç‚¹å‡»å¦‚ä¸‹è¿æ¥æ¿€æ´»è´¦æˆ·,å¦‚æœä¸èƒ½ç‚¹å‡»è¯·å¤åˆ¶åˆ°æµè§ˆå™¨åœ°å€æ è®¿é—®:http://www.estore.com/ActiveServlet?activecode="+user.getActivecode());
 		
 			Transport trans = session.getTransport();
 			trans.connect("admin", "admin");
@@ -53,22 +53,22 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	public void acitveUser(String activecode) {
-		//1.µ÷ÓÃdao¸ù¾İ¼¤»îÂë²éÕÒÓÃ»§
+		//1.è°ƒç”¨daoæ ¹æ®æ¿€æ´»ç æŸ¥æ‰¾ç”¨æˆ·
 		User user = dao.findUserByActivecode(activecode);
-		//2.Èç¹ûÕÒ²»µ½ÌáÊ¾¼¤»îÂëÎŞĞ§
+		//2.å¦‚æœæ‰¾ä¸åˆ°æç¤ºæ¿€æ´»ç æ— æ•ˆ
 		if(user == null){
-			throw new RuntimeException("¼¤»îÂë²»ÕıÈ·!!!!");
+			throw new RuntimeException("æ¿€æ´»ç ä¸æ­£ç¡®!!!!");
 		}
-		//3.Èç¹ûÓÃ»§ÒÑ¾­¼¤»î¹ı,ÌáÊ¾²»ÒªÖØ¸´¼¤»î
+		//3.å¦‚æœç”¨æˆ·å·²ç»æ¿€æ´»è¿‡,æç¤ºä¸è¦é‡å¤æ¿€æ´»
 		if(user.getState() == 1){
-			throw new RuntimeException("´ËÓÃ»§ÒÑ¾­¼¤»î¹ı!²»ÒªÖØ¸´¼¤»î!!");
+			throw new RuntimeException("æ­¤ç”¨æˆ·å·²ç»æ¿€æ´»è¿‡!ä¸è¦é‡å¤æ¿€æ´»!!");
 		}
-		//4.Èç¹ûÃ»¼¤»îµ«ÊÇ¼¤»îÂëÒÑ¾­³¬Ê±,ÔòÌáÊ¾,²¢É¾³ı´ËÓÃ»§
+		//4.å¦‚æœæ²¡æ¿€æ´»ä½†æ˜¯æ¿€æ´»ç å·²ç»è¶…æ—¶,åˆ™æç¤º,å¹¶åˆ é™¤æ­¤ç”¨æˆ·
 		if(System.currentTimeMillis() - user.getUpdatetime().getTime()>1000*3600*24){
 			dao.delUser(user.getId());
-			throw new RuntimeException("¼¤»îÂëÒÑ¾­³¬Ê±,ÇëÖØĞÂ×¢²á²¢ÔÚ24Ğ¡Ê±ÄÚ¼¤»î!");
+			throw new RuntimeException("æ¿€æ´»ç å·²ç»è¶…æ—¶,è¯·é‡æ–°æ³¨å†Œå¹¶åœ¨24å°æ—¶å†…æ¿€æ´»!");
 		}
-		//5.µ÷ÓÃdaoÖĞĞŞ¸ÄÓÃ»§¼¤»î×´Ì¬µÄ·½·¨
+		//5.è°ƒç”¨daoä¸­ä¿®æ”¹ç”¨æˆ·æ¿€æ´»çŠ¶æ€çš„æ–¹æ³•
 		dao.updateState(user.getId(),1);
 	}
 	public User getUserByNameAndPsw(String username, String password) {

@@ -3,70 +3,96 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-  	<script type="text/javascript">
-  		function changeNum(id,obj,oldnum){
-  			if(!/^[1-9]\d*$/.test(obj.value)){
+<%@include file="/head.html" %>
+ <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <script  type="text/javascript" src="js/jquery-1.4.2.js"></script>
+ <script type="text/javascript">
+
+  		function changeNum(){
+  			var $productId=document.getElementById("productId");
+  			var $oldnum=document.getElementById("quantity");
+  			var $nquantity=document.getElementById("quantity");
+  		
+  			if(!/^[1-9]\d*$/.test($nquantity.value)){
+  				
   				alert("购买数量必须为正整数!");
-  				obj.value=oldnum;
-  				return;
+  				
+  				$quantity.value=oldnum;
+  				//console.log("购买数量必须是正数");
+  				return false;
   			}
-  			window.location.href="/ChangeCartServlet?id="+id+"&buynum="+obj.value;
+  		
+  			window.location.href="${pageContext.request.contextPath}/ChangeCartServlet?id="+$productId.value+"&buynum="+$nquantity.value;
+  			return false;
+  		
   		}
-  	</script>
+  		function test(a,b){return false;}
+</script>
   </head>
-  <body style="text-align: center;" >
-  	<h1>我的购物车</h1>
-  	<div align="right">
-  		<a href="/ProdListServlet">继续购物</a>
-  		<a href="/ClearCartServlet">清空购物车</a>
-  		<a href="/addOrder.jsp"><img src="/img/gotoorder.bmp"/></a>
+  
+  
+  <body class="locale-en_US">
+  <%@include file="/header.html" %>
+  
+   <div id="content" class="width_setter group" role="main">
+  
+  <c:if test="${sessionScope.user!=null} }">
+  <%@include file="/nav0.html" %>
+  </c:if>
+  
+  <div id="account">
+  <title>Cart</title>
+  
+
+  
+  	<div id="cart" class="cart_modal" style="padding-left:0px;">
+  	
+  	
+  	
+  	 <c:if test="${empty sessionScope.cartmap}">
+       <div id="cart_total" class="group"  style="margin-left:auto;
+margin-right:auto;">
+       <h2><a href="${pageContext.request.contextPath}/ProdListServlet">购物车空空如也,请先去挑点东西吧~~~</a></h2>
+       </div>
+     </c:if>
+     
+     
+     
+     
+  	<c:if test="${not empty sessionScope.cartmap}">
+     <%@include file="/cartProductsTable.html" %>
+     <div id="cart_total" class="group">
+            <h3><span>您当前的小计</span></h3>
+            <div id="subtotal"><span>${entry.key.price}*${entry.value }RMB</span></div>
+            
+            <p><span>小计还不包括税费，运费和手续费</span>.</p>
+            <div id="checkout">
+                <a href="${pageContext.request.contextPath}/addOrder.jsp" target="_top" class="big-button red-button">
+                    <span >查看</span>
+                </a>
+            </div>
+            <p>
+                <form action="#" complete_checkout="${false}" method="POST">
+                    <input type="hidden" name="TRANSACTION_AMT" value="${cart.total}"/>
+                    <input type="hidden" name="ORDER_ID" value="${cart.id}"/>
+                    <input type="hidden" name="COMPLETE_CHECKOUT_ON_CALLBACK" value="false"/>
+                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;" alt="Submit Form" />
+                </form>
+                <div class="clearfix"></div>
+                <a href="${pageContext.request.contextPath}/ProdListServlet" target="_top">&laquo; <span>Continue Shopping</span></a><br/>
+                 <a href="${pageContext.request.contextPath}/ClearCartServlet" target="_top">&laquo; <span>clear the cart</span></a>
+            </p>
+        </div>
+        </c:if>
+       
+        
+
+    </div>
+ 
+
   	</div>
   	
-  	<hr>
-  	<c:if test="${empty sessionScope.cartmap}">
-  		<h2><a href="/ProdListServlet">购物车空空如也,请先去挑点东西吧~~~</a></h2>
-  	</c:if>
-  	<c:if test="${not empty sessionScope.cartmap}">
-		<table width="100%" border="1" style="text-align: center">
-			<tr>
-				<th>缩略图</th>
-				<th>商品名称</th>
-				<th>商品种类</th>
-				<th>商品单价</th>
-				<th>购买数量</th>
-				<th>库存状态</th>
-				<th>总价</th>
-				<th>删除</th>
-			</tr>
-			<c:set var="money" value="0" />
-			<c:forEach items="${sessionScope.cartmap}" var="entry">
-				<tr>
-					<td><img src="/ImgServlet?imgurl=${entry.key.imgurls }"/></td>
-					<td>${entry.key.name }</td>
-					<td>${entry.key.category }</td>
-					<td>${entry.key.price }元</td>
-					<td><input type="text" value="${entry.value }" style="width: 30px" onchange="changeNum('${entry.key.id }',this,${entry.value })"/>件</td>
-					<td>
-						<c:if test="${entry.value<=entry.key.pnum}">
-							<font color="blue">有货</font>
-						</c:if>
-						<c:if test="${entry.value>entry.key.pnum}">
-							<font color="red">缺货</font>
-						</c:if>
-					</td>
-					<td>
-						${entry.key.price * entry.value }元
-						<c:set var="money" value="${money + entry.key.price * entry.value }"/>
-					</td>
-					<td>
-						<a href="/DelCartServlet?id=${entry.key.id }">删除</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<div align="right">
-			<font color="red" size=6">总价:${money }元</font>
-		</div>
-  	</c:if>
+      </div>
+  	  <%@include file="/footer.html" %>
   </body>
 </html>

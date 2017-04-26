@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
 			autologinC.setMaxAge(0);
 			response.addCookie(autologinC);
 		}
-		response.sendRedirect("/index.jsp");
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

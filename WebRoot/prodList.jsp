@@ -5,11 +5,11 @@
   <head>
   </head>
   <body>
-  	<h1>Estore_商品列表</h1><hr>
+  	<h1>商品列表</h1><hr>
   	<table width="100%" style="text-align: center;" >
   	<c:forEach items="${requestScope.list}" var="prod">
   		<tr>
-  			<td width="20%"><a href="/ProdInfoServlet?id=${prod.id }"><img src="/ImgServlet?imgurl=${prod.imgurls }" style="cursor: pointer;"/></a></td>
+  			<td width="20%"><a href="${pageContext.request.contextPath}/ProdInfoServlet?id=${prod.id }"><img src="${pageContext.request.contextPath}/ImgServlet?imgurl=${prod.imgurls }" style="cursor: pointer;"/></a></td>
   			<td width="40%">
   				${prod.name }<br>
   				${prod.price }<br>

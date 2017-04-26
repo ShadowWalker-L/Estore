@@ -24,7 +24,7 @@ public class DelCartServlet extends HttpServlet {
 		Map<Product,Integer> cartmap = (Map<Product, Integer>) request.getSession().getAttribute("cartmap");
 		cartmap.remove(prod);
 		//3.重定向回到购物车页面
-		response.sendRedirect("/cart.jsp");
+		response.sendRedirect(request.getContextPath()+"/cart.jsp");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
