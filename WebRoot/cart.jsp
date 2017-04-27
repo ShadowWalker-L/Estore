@@ -8,7 +8,7 @@
  <script  type="text/javascript" src="js/jquery-1.4.2.js"></script>
  <script type="text/javascript">
 
-  		function changeNum(){
+  		function changeNum(oldnum){
   			var $productId=document.getElementById("productId");
   			var $oldnum=document.getElementById("quantity");
   			var $nquantity=document.getElementById("quantity");
@@ -16,17 +16,18 @@
   			if(!/^[1-9]\d*$/.test($nquantity.value)){
   				
   				alert("购买数量必须为正整数!");
-  				
-  				$quantity.value=oldnum;
+  			
+  				$nquantity.value=oldnum;
   				//console.log("购买数量必须是正数");
   				return false;
+  			
   			}
-  		
+  		    
   			window.location.href="${pageContext.request.contextPath}/ChangeCartServlet?id="+$productId.value+"&buynum="+$nquantity.value;
   			return false;
   		
   		}
-  		function test(a,b){return false;}
+  		function test(){window.location.href="${pageContext.request.contextPath}/ChangeCartServlet?id="+$productId.value+"&buynum="+$nquantity.value;}
 </script>
   </head>
   
@@ -63,7 +64,7 @@ margin-right:auto;">
      <%@include file="/cartProductsTable.html" %>
      <div id="cart_total" class="group">
             <h3><span>您当前的小计</span></h3>
-            <div id="subtotal"><span>${entry.key.price}*${entry.value }RMB</span></div>
+            <div id="subtotal"><span>${money+entry.key.price*entry.value }RMB</span></div>
             
             <p><span>小计还不包括税费，运费和手续费</span>.</p>
             <div id="checkout">
