@@ -28,7 +28,7 @@
             </div>
             </c:if>
 
-          <c:if test="${sessionScope.user!=null}">
+          <c:if test="${sessionScope.user!=null&&user.username!='admin'}">
             <a id="cartLink" class="modalcart" href="${pageContext.request.contextPath}/cart.jsp">
                 <img src="img/shopping_cart.png" alt="Shopping Cart Icon" />
                 &nbsp; 

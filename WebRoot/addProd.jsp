@@ -1,7 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+   
+  <%@include file="/head.html" %>
   <script type="text/javascript" src="/js/jquery-1.4.2.js"></script>
   	<script type="text/javascript">
   		function checkData(){
@@ -35,8 +38,12 @@
   	</script>
   </head>
   <body style="text-align: center;">
-  	<h1>添加商品</h1><hr>
-  	<form action="/AddprodServlet" method="POST" enctype="multipart/form-data" onsubmit="return checkData()">
+  <%@include file="/header.html" %>
+
+  
+  <div id="content" class="width_setter group" role="main">
+
+  	<form action="/AddprodServlet" method="POST" enctype="multipart/form-data" onsubmit="return checkData()"  style="margin:100px">
   		<table border="1">
   			<tr>
   				<td>商品名称</td>
@@ -82,5 +89,7 @@
   		</table>
   	</form>
   				
+  	</div>			
+  <%@include file="/footer.html" %>
   </body>
 </html>
