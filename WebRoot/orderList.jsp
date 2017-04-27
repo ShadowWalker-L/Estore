@@ -3,9 +3,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+    <%@include file="/head.html" %>
   </head>
+  
   <body>
-  	<h1>订单列表</h1><hr>
+  <%@include file="/header.html" %>
+  
+  <div id="content" class="width_setter group" role="main">
+  
+  <div id="account">
+  <title>Register</title>
+  
   	<c:forEach items="${requestScope.list}" var="olf">
   		<h3>
   		订单号:${olf.id }<br>
@@ -15,8 +23,8 @@
 		支付状态 :
 			<c:if test="${olf.paystate == 0}">
 				<font color="red">未支付</font>
-				<a href="/DelOrderServlet?id=${olf.id }">订单删除</a>
-				<a href="/pay.jsp?id=${olf.id }&money=${olf.money }">在线支付</a>
+				<a href="${pageContext.request.contextPath}/DelOrderServlet?id=${olf.id }">订单删除</a>
+				<a href="${pageContext.request.contextPath}/pay.jsp?id=${olf.id }&money=${olf.money }">在线支付</a>
 			</c:if>
 			<c:if test="${olf.paystate != 0}">
 				<font color="blue">已支付</font>
@@ -44,5 +52,11 @@
 		</table>
 		<hr>
   	</c:forEach>
+  	
+  	
+  	</div>
+  	</div>
+  	
+  	  <%@include file="/footer.html" %>
   </body>
 </html>

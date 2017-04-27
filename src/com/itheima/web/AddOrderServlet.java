@@ -56,7 +56,7 @@ public class AddOrderServlet extends HttpServlet {
 			cartmap.clear();
 			
 			response.getWriter().write("订单生成成功!请去支付!");
-			response.setHeader("refresh", "3;url=/index.jsp");
+			response.setHeader("refresh", "3;url=Estore/index.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
