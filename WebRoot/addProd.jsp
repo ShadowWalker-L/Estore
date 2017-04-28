@@ -43,7 +43,7 @@
   
   <div id="content" class="width_setter group" role="main">
 
-  	<form action="/AddprodServlet" method="POST" enctype="multipart/form-data" onsubmit="return checkData()"  style="margin:100px">
+  	<form action="${pageContext.request.contextPath}/AddprodServlet" method="POST" enctype="multipart/form-data" onsubmit="return checkData()"  style="margin:100px">
   		<table border="1">
   			<tr>
   				<td>商品名称</td>

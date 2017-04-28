@@ -26,12 +26,12 @@ public class LoginServlet extends HttpServlet {
 		User user = service.getUserByNameAndPsw(username,password);
 		if(user == null){
 			request.setAttribute("msg", "用户名密码不正确!");
-			request.getRequestDispatcher(request.getContextPath()+"/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}
 		if(user.getState() == 0){
 			request.setAttribute("msg", "用户尚未激活,请到邮箱中进行激活!");
-			request.getRequestDispatcher(request.getContextPath()+"/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}
 		

@@ -136,7 +136,7 @@ public class AddprodServlet extends HttpServlet {
 			
 			//3.提示成功,回到主页
 			response.getWriter().write("添加商品成功!3秒回到主页..");
-			response.setHeader("Refresh", "3;url=/index.jsp");
+			response.setHeader("Refresh", "3;url=/Estore/admin.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
