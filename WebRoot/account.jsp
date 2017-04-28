@@ -8,7 +8,16 @@
  <body> 
  <%@include file="/header.html" %>
  <div id="content" class="width_setter group" role="main">   
+  
+  <c:if test="${sessionScope.user.username!='admin'}">
    <%@include file="/nav0.html" %>
+   </c:if>
+   
+   <c:if test="${sessionScope.user.username=='admin'}">
+   <%@include file="/nav1.html" %>
+   </c:if>
+   
+   
    <div class="manage-account-container clearfix">
     <h1>Account Options</h1>
     <ul id="account-menu">

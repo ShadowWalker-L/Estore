@@ -3,9 +3,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+    <%@include file="/head.html" %>
   </head>
   <body>
-  	<h1>Estore_用户列表</h1><hr>
+  <%@include file="/header.html" %>
+   <div id="content" class="width_setter group" role="main">
+ 
+   <%@include file="/nav1.html" %>
+    <div class="manage-account-container clearfix" style="margin-right:60px">
+  	<h1>Account  List</h1><hr>
   	<table width="100%" border = "1" style="text-align: center;" >
   	<tr>
   		<th>用户名</th>
@@ -25,5 +31,10 @@
 		</tr>
   	</c:forEach>
   	</table>
+  	
+  	</div>
+  	</div>
+  	
+  	<%@include file="/footer.html" %>
   </body>
 </html>

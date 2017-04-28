@@ -10,7 +10,8 @@
   <%@include file="/header.html" %>
   
   <div id="content" class="width_setter group" role="main">
-  
+    <%@include file="/nav0.html" %>
+ <div class="manage-account-container clearfix">
   <div id="account">
   <title>Register</title>
   
@@ -54,6 +55,7 @@
   	</c:forEach>
   	
   	
+  	</div>
   	</div>
   	</div>
   	

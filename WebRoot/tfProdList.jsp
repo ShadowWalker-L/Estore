@@ -3,9 +3,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+    <%@include file="/head.html" %>
   </head>
   <body>
-  	<h1>Estore_免税商品列表</h1><hr>
+    <%@include file="/header.html" %>
+  <div id="content" class="width_setter group" role="main">
+  <%@include file="/nav0.html" %>
+ <div class="manage-account-container clearfix">
+   <div id="account">
+  	<h1>TAX FREE LIST</h1><hr>
   	<table width="100%" style="text-align: center;" >
   	<c:forEach items="${requestScope.mylist}" var="prod">
   		<tr>
@@ -29,5 +35,12 @@
 		</tr>
   	</c:forEach>
   	</table>
+  	</div>
+  	</div>
+  	
+  	</div>
+  	
+  	
+  	  <%@include file="/footer.html" %>
   </body>
 </html>
