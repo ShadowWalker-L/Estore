@@ -7,50 +7,50 @@ import com.itheima.domain.User;
 public interface UserDao  extends Dao{
 
 	/**
-	 * ¸ù¾İÓÃ»§Ãû²éÕÒÓÃ»§
-	 * @param username ÓÃ»§Ãû
+	 * æ ¹æ®ç”¨æˆ·åæŸ¥æ‰¾ç”¨æˆ·
+	 * @param username ç”¨æˆ·å
 	 * @param conn 
-	 * @return ²éÕÒµ½µÄÓÃ»§,Èç¹ûÕÒ²»µ½·µ»Ønull
+	 * @return æŸ¥æ‰¾åˆ°çš„ç”¨æˆ·,å¦‚æœæ‰¾ä¸åˆ°è¿”å›null
  	 */
 	User findUserByName(String username);
 
 	/**
-	 * Ìí¼ÓÓÃ»§
-	 * @param user ·â×°ÁËÓÃ»§ĞÅÏ¢µÄbean
+	 * æ·»åŠ ç”¨æˆ·
+	 * @param user å°è£…äº†ç”¨æˆ·ä¿¡æ¯çš„bean
 	 * @param conn 
 	 */
 	void addUser(User user);
 
 	/**
-	 * ¸ù¾İ¼¤»îÂë²éÕÒÓÃ»§
-	 * @param activecode ¼¤»îÂë
-	 * @return ÕÒµ½µÄÓÃ»§,Èç¹û²»´æÔÚ·µ»Ønull
+	 * æ ¹æ®æ¿€æ´»ç æŸ¥æ‰¾ç”¨æˆ·
+	 * @param activecode æ¿€æ´»ç 
+	 * @return æ‰¾åˆ°çš„ç”¨æˆ·,å¦‚æœä¸å­˜åœ¨è¿”å›null
 	 */
 	User findUserByActivecode(String activecode);
 
 	/**
-	 * ¸ù¾İidÉ¾³ıÓÃ»§
-	 * @param id ÒªÉ¾³ıµÄÓÃ»§id
+	 * æ ¹æ®idåˆ é™¤ç”¨æˆ·
+	 * @param id è¦åˆ é™¤çš„ç”¨æˆ·id
 	 */
 	void delUser(int id);
 
 	/**
-	 * ĞŞ¸ÄÖ¸¶¨id¿Í»§µÄ×´Ì¬
-	 * @param id ¿Í»§id
-	 * @param i Òª¸üĞÂµÄ¿Í»§×´Ì¬
+	 * ä¿®æ”¹æŒ‡å®šidå®¢æˆ·çš„çŠ¶æ€
+	 * @param id å®¢æˆ·id
+	 * @param i è¦æ›´æ–°çš„å®¢æˆ·çŠ¶æ€
 	 */
 	void updateState(int id, int state);
 
 	/**
-	 * ¸ù¾İÓÃ»§ÃûÃÜÂë²éÕÒÓÃ»§
-	 * @param username ÓÃ»§Ãû
-	 * @param password ÃÜÂë
-	 * @return ÕÒµ½µÄÓÃ»§bean
+	 * æ ¹æ®ç”¨æˆ·åå¯†ç æŸ¥æ‰¾ç”¨æˆ·
+	 * @param username ç”¨æˆ·å
+	 * @param password å¯†ç 
+	 * @return æ‰¾åˆ°çš„ç”¨æˆ·bean
 	 */
 	User finUserByNameAndPsw(String username, String password);
 
 	/**
-	 * ¸ù¾İid²éÕÒÓÃ»§
+	 * æ ¹æ®idæŸ¥æ‰¾ç”¨æˆ·
 	 * @param user_id
 	 * @return
 	 */

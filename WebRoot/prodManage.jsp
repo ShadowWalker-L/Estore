@@ -9,7 +9,8 @@
   	<table width="100%" style="text-align: center;" >
   	<c:forEach items="${requestScope.list}" var="prod">
   		<tr>
-  			<td width="20%"><a href="#"><img src="${pageContext.request.contextPath}/ImgServlet?imgurl=${prod.imgurls }" style="cursor: pointer;"/></a></td>
+  			<td width="20%"><a href="${pageContext.request.contextPath}/ProdChangeServlet?id=${prod.id }">
+  			<img src="${pageContext.request.contextPath}/ImgServlet?imgurl=${prod.imgurls }" style="cursor: pointer;"/></a></td>
   			<td width="40%">
   				${prod.name }<br>
   				${prod.price }<br>
@@ -17,7 +18,7 @@
   			</td>
   			<td width="40%">
   				<c:if test="${prod.pnum>0}">
-  					<font color="blue">有货</font>
+  					<font color="blue">存量:${prod.pnum }</font>
   				</c:if>
   				<c:if test="${prod.pnum<=0}">
   					<font color="red">缺货</font>

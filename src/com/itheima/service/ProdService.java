@@ -7,22 +7,24 @@ import com.itheima.domain.Product;
 public interface ProdService  extends Service{
 
 	/**
-	 * Ìí¼ÓÉÌÆ·
-	 * @param prod ÉÌÆ·ĞÅÏ¢bean
+	 * æ·»åŠ å•†å“
+	 * @param prod å•†å“ä¿¡æ¯bean
 	 */
 	void addProd(Product prod);
 
 	/**
-	 * ²éÑ¯ËùÓĞÉÌÆ·
+	 * æŸ¥è¯¢æ‰€æœ‰å•†å“
 	 * @return
 	 */
 	List<Product> findAllProd();
 
 	/**
-	 * ¸ù¾İid²éÕÒÉÌÆ·ĞÅÏ¢
+	 * æ ¹æ®idæŸ¥æ‰¾å•†å“ä¿¡æ¯
 	 * @param id
 	 * @return
 	 */
 	Product findProdById(String id);
+	
+	void changeProd(String product_id, double price, int pnum);
 
 }

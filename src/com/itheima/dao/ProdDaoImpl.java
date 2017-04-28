@@ -50,7 +50,7 @@ public class ProdDaoImpl implements ProdDao {
 		QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 		int count = runner.update(sql,buynum,product_id,buynum);
 		if(count<=0){
-			throw new SQLException("��治��!");
+			throw new SQLException("库存不能为负数!");
 		}
 	}
 
@@ -63,6 +63,18 @@ public class ProdDaoImpl implements ProdDao {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public void changeProd(String product_id, double price, int pnum){
+		String sql = "update products set price = ?, pnum = ? where id = ? ";
+		try{
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, price, pnum, product_id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}	
 	}
 
 }

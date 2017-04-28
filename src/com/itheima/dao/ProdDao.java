@@ -9,26 +9,26 @@ import com.itheima.domain.Product;
 public interface ProdDao  extends Dao{
 
 	/**
-	 * Ìí¼ÓÉÌÆ·
+	 * æ·»åŠ å•†å“
 	 * @param prod
 	 */
 	void addProd(Product prod);
 
 	/**
-	 * ²éÑ¯ËùÓĞ
+	 * æŸ¥è¯¢æ‰€æœ‰
 	 * @return
 	 */
 	List<Product> findAllProd();
 
 	/**
-	 * ¸ù¾İid²éÕÒÉÌÆ·
+	 * æ ¹æ®idæŸ¥æ‰¾å•†å“
 	 * @param id
 	 * @return
 	 */
 	Product findProdById(String id);
 
 	/**
-	 * ¿Û³ıÉÌÆ·¿â´æÊıÁ¿
+	 * æ‰£é™¤å•†å“åº“å­˜æ•°é‡
 	 * @param product_id
 	 * @param buynum
 	 * @throws SQLException 
@@ -36,10 +36,19 @@ public interface ProdDao  extends Dao{
 	void delPnum(String product_id, int buynum) throws SQLException;
 
 	/**
-	 * ¼Ó»Ø²úÆ·¿â´æÊıÁ¿
+	 * åŠ å›äº§å“åº“å­˜æ•°é‡
 	 * @param product_id
 	 * @param buynum
 	 */
 	void addPnum(String product_id, int buynum);
+	
+	/**
+	 * ä¿®æ”¹å•†å“
+	 * @param product_id
+	 * @param price
+	 * @param pnum
+	 * @throws SQLException
+	 */
+	void changeProd(String product_id, double price, int pnum);
 
 }
