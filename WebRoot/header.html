@@ -1,4 +1,14 @@
 <header>
+    <!-- 判断管理员还是客户 -->
+    <c:if test="${sessionScope.user!=null&&user.username!='admin'}">
+    <c:set var="account" value="user.jsp"/>
+    </c:if>
+    
+    <c:if test="${sessionScope.user!=null&&user.username=='admin'}">
+    <c:set var="account" value="admin.jsp"/>
+    </c:if>
+   
+    
     <div id="header_content">
         <div id="cart_info">
 
@@ -18,7 +28,7 @@
             
             <c:if test="${sessionScope.user!=null}">
             <div>
-                <span><span>Welcome,</span><a class="my-account" href="${pageContext.request.contextPath}/user.jsp" style="text-decoration:underline"> ${sessionScope.user.username}</a></span>
+                <span><span>Welcome,</span><a class="my-account" href="${pageContext.request.contextPath}/account.jsp" style="text-decoration:underline"> ${sessionScope.user.username}</a></span>
                 <!-- <span th:text=" (${customer.averageHeatRatingBought})"></span> -->
                 &nbsp;|&nbsp;                               
                 <a href="${pageContext.request.contextPath}/LogoutServlet">
@@ -64,8 +74,17 @@
 
         </div>
 
+        <c:if test="${sessionScope.user==null}">
         <div id="logo"><img src="img/the-heat-clinic-logo-initernal.jpg" style="margin-top:10px;"></img></div>
+        </c:if>
         
+        <c:if test="${sessionScope.user!=null&&user.username!='admin'}">
+         <div id="logo"><a href="${pageContext.request.contextPath}/user.jsp"><img src="img/the-heat-clinic-logo-initernal.jpg" style="margin-top:10px;"></img></a></div>
+        </c:if>
+        
+        <c:if test="${sessionScope.user!=null&&user.username=='admin'}">
+        <div id="logo"><a href="${pageContext.request.contextPath}/admin.jsp"><img src="img/the-heat-clinic-logo-initernal.jpg" style="margin-top:10px;"></img></a></div>
+        </c:if>
        
     </div>
 </header>
