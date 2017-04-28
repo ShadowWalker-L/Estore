@@ -10,7 +10,7 @@ import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 /**
- * ÖÆ×÷Í¼Æ¬ËõÂÔÍ¼
+ * åˆ¶ä½œå›¾ç‰‡ç¼©ç•¥å›¾
  * 
  * @author seawind
  * 
@@ -23,48 +23,48 @@ public class PicUtils {
 	private Image img;
 
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * 
 	 * @param fileName
 	 *            String
 	 * @throws IOException
 	 */
 	public PicUtils(String fileName) throws IOException {
-		File _file = new File(fileName); // ¶ÁÈëÎÄ¼ş
+		File _file = new File(fileName); // è¯»å…¥æ–‡ä»¶
 		this.srcFile = fileName;
-		// ²éÕÒ×îºóÒ»¸ö.
+		// æŸ¥æ‰¾æœ€åä¸€ä¸ª.
 		int index = this.srcFile.lastIndexOf(".");
 		String ext = this.srcFile.substring(index);
 		this.destFile = this.srcFile.substring(0, index) + "_s" + ext;
-		img = javax.imageio.ImageIO.read(_file); // ¹¹ÔìImage¶ÔÏó
-		width = img.getWidth(null); // µÃµ½Ô´Í¼¿í
-		height = img.getHeight(null); // µÃµ½Ô´Í¼³¤
+		img = javax.imageio.ImageIO.read(_file); // æ„é€ Imageå¯¹è±¡
+		width = img.getWidth(null); // å¾—åˆ°æºå›¾å®½
+		height = img.getHeight(null); // å¾—åˆ°æºå›¾é•¿
 	}
 
 	/**
-	 * Ç¿ÖÆÑ¹Ëõ/·Å´óÍ¼Æ¬µ½¹Ì¶¨µÄ´óĞ¡
+	 * å¼ºåˆ¶å‹ç¼©/æ”¾å¤§å›¾ç‰‡åˆ°å›ºå®šçš„å¤§å°
 	 * 
 	 * @param w
-	 *            int ĞÂ¿í¶È
+	 *            int æ–°å®½åº¦
 	 * @param h
-	 *            int ĞÂ¸ß¶È
+	 *            int æ–°é«˜åº¦
 	 * @throws IOException
 	 */
 	public void resize(int w, int h) throws IOException {
 		BufferedImage _image = new BufferedImage(w, h,
 				BufferedImage.TYPE_INT_RGB);
-		_image.getGraphics().drawImage(img, 0, 0, w, h, null); // »æÖÆËõĞ¡ºóµÄÍ¼
-		FileOutputStream out = new FileOutputStream(destFile); // Êä³öµ½ÎÄ¼şÁ÷
+		_image.getGraphics().drawImage(img, 0, 0, w, h, null); // ç»˜åˆ¶ç¼©å°åçš„å›¾
+		FileOutputStream out = new FileOutputStream(destFile); // è¾“å‡ºåˆ°æ–‡ä»¶æµ
 		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-		encoder.encode(_image); // ½üJPEG±àÂë
+		encoder.encode(_image); // è¿‘JPEGç¼–ç 
 		out.close();
 	}
 
 	/**
-	 * °´ÕÕ¹Ì¶¨µÄ±ÈÀıËõ·ÅÍ¼Æ¬
+	 * æŒ‰ç…§å›ºå®šçš„æ¯”ä¾‹ç¼©æ”¾å›¾ç‰‡
 	 * 
 	 * @param t
-	 *            double ±ÈÀı
+	 *            double æ¯”ä¾‹
 	 * @throws IOException
 	 */
 	public void resize(double t) throws IOException {
@@ -74,10 +74,10 @@ public class PicUtils {
 	}
 
 	/**
-	 * ÒÔ¿í¶ÈÎª»ù×¼£¬µÈ±ÈÀı·ÅËõÍ¼Æ¬
+	 * ä»¥å®½åº¦ä¸ºåŸºå‡†ï¼Œç­‰æ¯”ä¾‹æ”¾ç¼©å›¾ç‰‡
 	 * 
 	 * @param w
-	 *            int ĞÂ¿í¶È
+	 *            int æ–°å®½åº¦
 	 * @throws IOException
 	 */
 	public void resizeByWidth(int w) throws IOException {
@@ -86,10 +86,10 @@ public class PicUtils {
 	}
 
 	/**
-	 * ÒÔ¸ß¶ÈÎª»ù×¼£¬µÈ±ÈÀıËõ·ÅÍ¼Æ¬
+	 * ä»¥é«˜åº¦ä¸ºåŸºå‡†ï¼Œç­‰æ¯”ä¾‹ç¼©æ”¾å›¾ç‰‡
 	 * 
 	 * @param h
-	 *            int ĞÂ¸ß¶È
+	 *            int æ–°é«˜åº¦
 	 * @throws IOException
 	 */
 	public void resizeByHeight(int h) throws IOException {
@@ -98,12 +98,12 @@ public class PicUtils {
 	}
 
 	/**
-	 * °´ÕÕ×î´ó¸ß¶ÈÏŞÖÆ£¬Éú³É×î´óµÄµÈ±ÈÀıËõÂÔÍ¼
+	 * æŒ‰ç…§æœ€å¤§é«˜åº¦é™åˆ¶ï¼Œç”Ÿæˆæœ€å¤§çš„ç­‰æ¯”ä¾‹ç¼©ç•¥å›¾
 	 * 
 	 * @param w
-	 *            int ×î´ó¿í¶È
+	 *            int æœ€å¤§å®½åº¦
 	 * @param h
-	 *            int ×î´ó¸ß¶È
+	 *            int æœ€å¤§é«˜åº¦
 	 * @throws IOException
 	 */
 	public void resizeFix(int w, int h) throws IOException {
@@ -115,10 +115,10 @@ public class PicUtils {
 	}
 
 	/**
-	 * ÉèÖÃÄ¿±êÎÄ¼şÃû setDestFile
+	 * è®¾ç½®ç›®æ ‡æ–‡ä»¶å setDestFile
 	 * 
 	 * @param fileName
-	 *            String ÎÄ¼şÃû×Ö·û´®
+	 *            String æ–‡ä»¶åå­—ç¬¦ä¸²
 	 */
 	public void setDestFile(String fileName) throws Exception {
 		if (!fileName.endsWith(".jpg")) {
@@ -128,21 +128,21 @@ public class PicUtils {
 	}
 
 	/**
-	 * »ñÈ¡Ä¿±êÎÄ¼şÃû getDestFile
+	 * è·å–ç›®æ ‡æ–‡ä»¶å getDestFile
 	 */
 	public String getDestFile() {
 		return destFile;
 	}
 
 	/**
-	 * »ñÈ¡Í¼Æ¬Ô­Ê¼¿í¶È getSrcWidth
+	 * è·å–å›¾ç‰‡åŸå§‹å®½åº¦ getSrcWidth
 	 */
 	public int getSrcWidth() {
 		return width;
 	}
 
 	/**
-	 * »ñÈ¡Í¼Æ¬Ô­Ê¼¸ß¶È getSrcHeight
+	 * è·å–å›¾ç‰‡åŸå§‹é«˜åº¦ getSrcHeight
 	 */
 	public int getSrcHeight() {
 		return height;

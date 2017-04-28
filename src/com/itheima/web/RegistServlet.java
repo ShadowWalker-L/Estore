@@ -32,8 +32,8 @@ public class RegistServlet extends HttpServlet {
 			user.setPassword(MD5Utils.md5(user.getPassword()));
 			service.regist(user);
 			
-			response.getWriter().write("ע注册成功,请到邮箱中进行激活...");
-			response.setHeader("Refresh", "3;url=/index.jsp");
+			response.getWriter().write("注册成功,请到邮箱中进行激活...");
+			response.setHeader("Refresh", "3;url=/Estore/index.jsp");
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

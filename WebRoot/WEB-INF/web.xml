@@ -61,10 +61,6 @@
 	    <servlet-class>com.itheima.web.ValiImg</servlet-class>
 	  </servlet>
   <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.itheima.web.LoginServlet</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>ActiveServlet</servlet-name>
     <servlet-class>com.itheima.web.ActiveServlet</servlet-class>
   </servlet>
@@ -145,11 +141,34 @@
     <servlet-class>com.itheima.web.UploadMsgServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>ProdManageServlet</servlet-name>
     <servlet-class>com.itheima.web.ProdManageServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.itheima.web.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ProdChangeServlet</servlet-name>
+    <servlet-class>com.itheima.web.ProdChangeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateProdServlet</servlet-name>
+    <servlet-class>com.itheima.web.UpdateProdServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserListServlet</servlet-name>
+    <servlet-class>com.itheima.web.UserListServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TfProdListServlet</servlet-name>
+    <servlet-class>com.itheima.web.TfProdListServlet</servlet-class>
+  </servlet>
+
+
+
+
+
 
 
 
@@ -177,10 +196,6 @@
 	    <servlet-name>ValiImg</servlet-name>
 	    <url-pattern>/ValiImg</url-pattern>
 	  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/LoginServlet</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ActiveServlet</servlet-name>
     <url-pattern>/ActiveServlet</url-pattern>
@@ -264,6 +279,26 @@
   <servlet-mapping>
     <servlet-name>ProdManageServlet</servlet-name>
     <url-pattern>/ProdManageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProdChangeServlet</servlet-name>
+    <url-pattern>/ProdChangeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateProdServlet</servlet-name>
+    <url-pattern>/UpdateProdServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserListServlet</servlet-name>
+    <url-pattern>/UserListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TfProdListServlet</servlet-name>
+    <url-pattern>/TfProdListServlet</url-pattern>
   </servlet-mapping>
 	<!-- Servlet配置结束 -->
 	

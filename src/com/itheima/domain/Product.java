@@ -7,9 +7,11 @@ public class Product implements Serializable {
 	private String name;
 	private double price;
 	private String category;
+	private int taxFree;
 	private int pnum;
 	private String imgurl;
 	private String description;
+	
 	public String getId() {
 		return id;
 	}
@@ -33,6 +35,12 @@ public class Product implements Serializable {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public int getTaxFree() {
+		return taxFree;
+	}
+	public void setTaxFree(int taxFree) {
+		this.taxFree = taxFree;
 	}
 	public int getPnum() {
 		return pnum;

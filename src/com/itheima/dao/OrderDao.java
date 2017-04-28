@@ -12,61 +12,61 @@ import com.itheima.domain.SaleInfo;
 public interface OrderDao extends Dao {
 
 	/**
-	 * ÔÚ¶©µ¥±íÖĞ²åÈë¼ÇÂ¼
+	 * åœ¨è®¢å•è¡¨ä¸­æ’å…¥è®°å½•
 	 * @param order
 	 * @throws SQLException 
 	 */
 	void addOrder(Order order) throws SQLException;
 
 	/**
-	 * ÔÚ¶©µ¥Ïî±íÖĞ²åÈë¼ÇÂ¼
+	 * åœ¨è®¢å•é¡¹è¡¨ä¸­æ’å…¥è®°å½•
 	 * @param item
 	 * @throws SQLException 
 	 */
 	void addOrderItem(OrderItem item) throws SQLException;
 
 	/**
-	 * ²éÑ¯Ö¸¶¨ÓÃ»§µÄËùÓĞ¶©µ¥
-	 * @param user_id Òª²éÑ¯µÄÓÃ»§id
-	 * @return ËùÓĞÕâ¸öÓÃ»§¶©µ¥ĞÅÏ¢×é³ÉµÄ¼¯ºÏ
+	 * æŸ¥è¯¢æŒ‡å®šç”¨æˆ·çš„æ‰€æœ‰è®¢å•
+	 * @param user_id è¦æŸ¥è¯¢çš„ç”¨æˆ·id
+	 * @return æ‰€æœ‰è¿™ä¸ªç”¨æˆ·è®¢å•ä¿¡æ¯ç»„æˆçš„é›†åˆ
 	 */
 	List<Order> findOrderByUserId(int user_id);
 
 	/**
-	 * ²éÑ¯Ö¸¶¨¶©µ¥µÄËùÓĞ¶©µ¥Ïî
+	 * æŸ¥è¯¢æŒ‡å®šè®¢å•çš„æ‰€æœ‰è®¢å•é¡¹
 	 * @param id
 	 * @return
 	 */
 	List<OrderItem> findOrderItems(String id);
 
 	/**
-	 * É¾³ıÖ¸¶¨id¶©µ¥Ëù¹ØÁªµÄËùÓĞ¶©µ¥Ïî
-	 * @param order_id ¶©µ¥id
+	 * åˆ é™¤æŒ‡å®šidè®¢å•æ‰€å…³è”çš„æ‰€æœ‰è®¢å•é¡¹
+	 * @param order_id è®¢å•id
 	 */
 	void delOrderItem(String order_id);
 
 	/**
-	 * É¾³ıÖ¸¶¨id µÄ¶©µ¥
+	 * åˆ é™¤æŒ‡å®šid çš„è®¢å•
 	 * @param id
 	 */
 	void delOrder(String id);
 
 	/**
-	 * ¸ù¾İid²éÑ¯¶©µ¥
+	 * æ ¹æ®idæŸ¥è¯¢è®¢å•
 	 * @param order_id
 	 * @return
 	 */
 	Order finOrderById(String order_id);
 
 	/**
-	 * ĞŞ¸Ä¶©µ¥Ö§¸¶×´Ì¬
+	 * ä¿®æ”¹è®¢å•æ”¯ä»˜çŠ¶æ€
 	 * @param order
 	 * @param i
 	 */
 	void changePayState(String order, int i);
 
 	/**
-	 * ²éÑ¯ÏúÊÛ°ñµ¥
+	 * æŸ¥è¯¢é”€å”®æ¦œå•
 	 * @return
 	 */
 	List<SaleInfo> saleList();

@@ -1,7 +1,10 @@
 package com.itheima.dao;
 
+import java.util.List;
+
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.itheima.domain.User;
 import com.itheima.util.TransactionManager;
@@ -81,6 +84,18 @@ public class UserDaoImpl implements UserDao {
 		try{
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			return runner.query(sql, new BeanHandler<User>(User.class),user_id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<User> findAllUser() {
+		String sql = "select * from users";
+		try{
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<User>(User.class));
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

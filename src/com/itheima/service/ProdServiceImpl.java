@@ -19,5 +19,13 @@ public class ProdServiceImpl implements ProdService {
 	public Product findProdById(String id) {
 		return dao.findProdById(id);
 	}
+	@Override
+	public void changeProd(String product_id, double price, int pnum) {	
+		dao.changeProd(product_id, price, pnum);	
+	}
+	@Override
+	public List<Product> findAllTfProd() {
+		return dao.findAllTfProd();
+	}
 
 }

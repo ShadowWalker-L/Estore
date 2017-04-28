@@ -43,7 +43,7 @@
   
   <div id="content" class="width_setter group" role="main">
 
-  	<form action="/AddprodServlet" method="POST" enctype="multipart/form-data" onsubmit="return checkData()"  style="margin:100px">
+  	<form action="${pageContext.request.contextPath}/AddprodServlet" method="POST" enctype="multipart/form-data" onsubmit="return checkData()"  style="margin:100px">
   		<table border="1">
   			<tr>
   				<td>商品名称</td>
@@ -66,6 +66,14 @@
 					</select>
 				</td>
   			</tr>
+  			
+  			<tr>
+  				<td>免税商品</td>
+  				<td>
+  				<input type="text" name="taxFree"/>
+  				</td>
+  			</tr>
+  			
   			<tr>
   				<td>库存数量</td>
   				<td><input type="text" name="pnum"/></td>
