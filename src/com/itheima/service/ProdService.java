@@ -17,6 +17,13 @@ public interface ProdService  extends Service{
 	 * @return
 	 */
 	List<Product> findAllProd();
+	
+	/**
+	 * 查询所有商品
+	 * @return
+	 */
+	List<Product> findAllTfProd();
+	
 
 	/**
 	 * 根据id查找商品信息

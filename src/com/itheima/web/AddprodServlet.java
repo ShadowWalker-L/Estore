@@ -37,9 +37,12 @@ public class AddprodServlet extends HttpServlet {
 			throws ServletException, IOException {
 		ProdService service = BasicFactory.getFactory().getService(ProdService.class);
 		System.out.println(request.getParameter("name"));
+		
 		try {
 			String encode = this.getServletContext().getInitParameter("encode");
+			
 			Map<String, String> paramMap = new HashMap<String,String>();
+			
 			//1.上传图片
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			factory.setSizeThreshold(1024*100);
@@ -47,15 +50,12 @@ public class AddprodServlet extends HttpServlet {
 			
 			ServletFileUpload fileUpload = new ServletFileUpload(factory);
 			fileUpload.setHeaderEncoding(encode);
-//			fileUpload.setFileSizeMax(1024*1024*1);
-//			fileUpload.setSizeMax(1024*1024*10);
 			fileUpload.setProgressListener(new ProgressListener(){
 				Long beginTime = System.currentTimeMillis();
 				public void update(long bytesRead, long contentLength, int items) {
 					try {
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					UploadMsg umsg = new UploadMsg();
@@ -92,10 +92,12 @@ public class AddprodServlet extends HttpServlet {
 			List<FileItem> list = fileUpload.parseRequest(request);
 			for(FileItem item : list){
 				if(item.isFormField()){
+					
 					//普通字段
 					String name = item.getFieldName();
 					String value = item.getString(encode);
 					paramMap.put(name, value);
+					
 				}else{
 					//文件上传项
 					String realname = item.getName();
@@ -110,7 +112,7 @@ public class AddprodServlet extends HttpServlet {
 					}
 					imgurl +="/"+uuidname;
 					paramMap.put("imgurl", imgurl);
-					
+									
 					File uploadFile = new File(upload);
 					if(!uploadFile.exists())
 						uploadFile.mkdirs();
@@ -131,7 +133,7 @@ public class AddprodServlet extends HttpServlet {
 			
 			//2.调用Service中提供的方法,在数据库中添加商品
 			Product prod = new Product();
-			BeanUtils.populate(prod, paramMap);
+			BeanUtils.populate(prod, paramMap);	
 			service.addProd(prod);
 			
 			//3.提示成功,回到主页

@@ -51,4 +51,6 @@ public interface ProdDao  extends Dao{
 	 */
 	void changeProd(String product_id, double price, int pnum);
 
+	List<Product> findAllTfProd();
+
 }

@@ -66,6 +66,14 @@
 					</select>
 				</td>
   			</tr>
+  			
+  			<tr>
+  				<td>免税商品</td>
+  				<td>
+  				<input type="text" name="taxFree"/>
+  				</td>
+  			</tr>
+  			
   			<tr>
   				<td>库存数量</td>
   				<td><input type="text" name="pnum"/></td>
