@@ -1,35 +1,43 @@
 package com.itheima.service;
 
+import java.util.List;
+
 import com.itheima.annotation.Tran;
 import com.itheima.domain.User;
 
 public interface UserService  extends Service{
 
 	/**
-	 * ×¢²áÓÃ»§
-	 * @param user ·â×°ÁËÓÃ»§Êı¾İµÄuserbean
+	 * æ³¨å†Œç”¨æˆ·
+	 * @param user å°è£…äº†ç”¨æˆ·æ•°æ®çš„userbean
 	 */
 	@Tran
 	void regist(User user);
 
 	/**
-	 * ¼¤»îÓÃ»§µÄ·½·¨
-	 * @param activecode ¼¤»îÂë
+	 * æ¿€æ´»ç”¨æˆ·çš„æ–¹æ³•
+	 * @param activecode æ¿€æ´»ç 
 	 */
 	void acitveUser(String activecode);
 
 	/**
-	 * ¸ù¾İÓÃ»§ÃûÃÜÂë²éÕÒÓÃ»§
+	 * æ ¹æ®ç”¨æˆ·åå¯†ç æŸ¥æ‰¾ç”¨æˆ·
 	 * @param username
 	 * @param password
 	 */
 	User getUserByNameAndPsw(String username, String password);
 
 	/**
-	 * ¼ìÑéÓÃ»§ÃûÊÇ·ñÒÑ¾­´æÔÚ
+	 * æ£€éªŒç”¨æˆ·åæ˜¯å¦å·²ç»å­˜åœ¨
 	 * @param username
 	 * @return
 	 */
 	boolean hasName(String username);
+	
+	/**
+	 * æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·
+	 * @return
+	 */
+	List<User> findAllUser();
 
 }

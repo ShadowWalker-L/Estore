@@ -1,5 +1,6 @@
 package com.itheima.service;
 
+import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -76,6 +77,10 @@ public class UserServiceImpl implements UserService {
 	}
 	public boolean hasName(String username) {
 		return dao.findUserByName(username)!=null;
+	}
+	@Override
+	public List<User> findAllUser() {
+		return dao.findAllUser();
 	}
 
 }

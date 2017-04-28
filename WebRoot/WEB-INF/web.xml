@@ -141,29 +141,26 @@
     <servlet-class>com.itheima.web.UploadMsgServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>ProdManageServlet</servlet-name>
     <servlet-class>com.itheima.web.ProdManageServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.itheima.web.LoginServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>ProdChangeServlet</servlet-name>
     <servlet-class>com.itheima.web.ProdChangeServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>UpdateProdServlet</servlet-name>
     <servlet-class>com.itheima.web.UpdateProdServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UserListServlet</servlet-name>
+    <servlet-class>com.itheima.web.UserListServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -289,6 +286,10 @@
   <servlet-mapping>
     <servlet-name>UpdateProdServlet</servlet-name>
     <url-pattern>/UpdateProdServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserListServlet</servlet-name>
+    <url-pattern>/UserListServlet</url-pattern>
   </servlet-mapping>
 	<!-- Servlet配置结束 -->
 	

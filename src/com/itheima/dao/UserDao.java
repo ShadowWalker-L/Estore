@@ -1,6 +1,7 @@
 package com.itheima.dao;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.itheima.domain.User;
 
@@ -55,5 +56,7 @@ public interface UserDao  extends Dao{
 	 * @return
 	 */
 	User findUserById(int user_id);
+	
+	List<User> findAllUser();
 
 }

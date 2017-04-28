@@ -10,42 +10,42 @@ import com.itheima.domain.SaleInfo;
 public interface OrderService extends Service{
 
 	/**
-	 * Ôö¼Ó¶©µ¥
-	 * @param order ¶©µ¥bean
+	 * å¢åŠ è®¢å•
+	 * @param order è®¢å•bean
 	 */
 	@Tran
 	void addOrder(Order order);
 
 	/**
-	 * ²éÑ¯Ö¸¶¨ÓÃ»§ËùÓĞ¶©µ¥µÄ·½·¨
+	 * æŸ¥è¯¢æŒ‡å®šç”¨æˆ·æ‰€æœ‰è®¢å•çš„æ–¹æ³•
 	 * @param user_id
-	 * @return ²éÕÒµ½µÄÊı¾İ
+	 * @return æŸ¥æ‰¾åˆ°çš„æ•°æ®
 	 */
 	List<OrderListForm> findOrders(int user_id);
 
 	/**
-	 * ¸ù¾İ¶©µ¥±àºÅÉ¾³ı¶©µ¥
+	 * æ ¹æ®è®¢å•ç¼–å·åˆ é™¤è®¢å•
 	 * @param id
 	 */
 	@Tran
 	void delOrderByID(String id);
 
 	/**
-	 * ¸ù¾İid²éÑ¯¶©µ¥
+	 * æ ¹æ®idæŸ¥è¯¢è®¢å•
 	 * @param order
 	 * @return
 	 */
 	Order findOrderById(String order);
 
 	/**
-	 * ĞŞ¸ÄÖ¸¶¨id¶©µ¥µÄÖ§¸¶×´Ì¬
+	 * ä¿®æ”¹æŒ‡å®šidè®¢å•çš„æ”¯ä»˜çŠ¶æ€
 	 * @param order
 	 * @param i
 	 */
 	void changePayState(String order, int i);
 
 	/**
-	 * ²éÑ¯ÏúÊÛ°ñµ¥
+	 * æŸ¥è¯¢é”€å”®æ¦œå•
 	 * @return
 	 */
 	List<SaleInfo> saleList();
