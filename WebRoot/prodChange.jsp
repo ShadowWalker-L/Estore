@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+      <%@include file="/head.html" %>
   <script type="text/javascript" src="/js/jquery-1.4.2.js"></script>
   	<script type="text/javascript">
   		function checkData(){
@@ -21,7 +23,11 @@
   	</script>
   </head>
   <body style="text-align: center;">
-  	<h1>Estore_修改商品</h1><hr>
+     <%@include file="/header.html" %>
+      <div id="content" class="width_setter group" role="main">
+          <%@include file="/nav1.html" %>
+             <div class="manage-account-container clearfix">
+
   	<form action="${pageContext.request.contextPath}/UpdateProdServlet?id=${prod.id} " method="POST" onsubmit="return checkData()">
   		<table width="100%" border="1">
   			<tr>
@@ -51,6 +57,8 @@
   			</tr>
   		</table>
   	</form>
-  				
+  	</div>
+  	</div>	
+  	  <%@include file="/footer.html" %>
   </body>
 </html>

@@ -42,6 +42,9 @@
 
   
   <div id="content" class="width_setter group" role="main">
+  
+  <%@include file="/nav1.html" %>
+  <div class="manage-account-container clearfix">
 
   	<form action="${pageContext.request.contextPath}/AddprodServlet" method="POST" enctype="multipart/form-data" onsubmit="return checkData()"  style="margin:100px">
   		<table border="1">
@@ -96,8 +99,9 @@
   			</tr>
   		</table>
   	</form>
-  				
+  		</div>		
   	</div>			
+  	
   <%@include file="/footer.html" %>
   </body>
 </html>
