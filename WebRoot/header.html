@@ -27,7 +27,7 @@
             </c:if>
             
             <c:if test="${sessionScope.user!=null}">
-            <div>
+            <div style="display:inline-block">
                 <span><span>Welcome,</span><a class="my-account" href="${pageContext.request.contextPath}/account.jsp" style="text-decoration:underline"> ${sessionScope.user.username}</a></span>
                 <!-- <span th:text=" (${customer.averageHeatRatingBought})"></span> -->
                 &nbsp;|&nbsp;                               
