@@ -14,7 +14,7 @@
   				document.getElementsByName("price")[0].value = "";
   				return false;
   			}else if(price<=0){
-	  			alert("单价必须大于0!")
+	  			alert("单价必须大于0!");
 	  			document.getElementsByName("price")[0].value = "";
 	  			return false;
   			}else{

@@ -58,111 +58,111 @@
 	<!-- Servlet配置开始 -->	
 	  <servlet>
 	    <servlet-name>ValiImg</servlet-name>
-	    <servlet-class>com.itheima.web.ValiImg</servlet-class>
+	    <servlet-class>com.itheima.web.common.ValiImg</servlet-class>
 	  </servlet>
   <servlet>
     <servlet-name>ActiveServlet</servlet-name>
-    <servlet-class>com.itheima.web.ActiveServlet</servlet-class>
+    <servlet-class>com.itheima.web.account.ActiveServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RegistServlet</servlet-name>
-    <servlet-class>com.itheima.web.RegistServlet</servlet-class>
+    <servlet-class>com.itheima.web.account.RegistServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
-    <servlet-class>com.itheima.web.LogoutServlet</servlet-class>
+    <servlet-class>com.itheima.web.account.LogoutServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AddprodServlet</servlet-name>
-    <servlet-class>com.itheima.web.AddprodServlet</servlet-class>
+    <servlet-class>com.itheima.web.prod.AddprodServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ProdListServlet</servlet-name>
-    <servlet-class>com.itheima.web.ProdListServlet</servlet-class>
+    <servlet-class>com.itheima.web.prod.ProdListServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ImgServlet</servlet-name>
-    <servlet-class>com.itheima.web.ImgServlet</servlet-class>
+    <servlet-class>com.itheima.web.common.ImgServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ProdInfoServlet</servlet-name>
-    <servlet-class>com.itheima.web.ProdInfoServlet</servlet-class>
+    <servlet-class>com.itheima.web.prod.ProdInfoServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AddCartServlet</servlet-name>
-    <servlet-class>com.itheima.web.AddCartServlet</servlet-class>
+    <servlet-class>com.itheima.web.cart.AddCartServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>DelCartServlet</servlet-name>
-    <servlet-class>com.itheima.web.DelCartServlet</servlet-class>
+    <servlet-class>com.itheima.web.cart.DelCartServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ChangeCartServlet</servlet-name>
-    <servlet-class>com.itheima.web.ChangeCartServlet</servlet-class>
+    <servlet-class>com.itheima.web.cart.ChangeCartServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ClearCartServlet</servlet-name>
-    <servlet-class>com.itheima.web.ClearCartServlet</servlet-class>
+    <servlet-class>com.itheima.web.cart.ClearCartServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AddOrderServlet</servlet-name>
-    <servlet-class>com.itheima.web.AddOrderServlet</servlet-class>
+    <servlet-class>com.itheima.web.order.AddOrderServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>OrderListServlet</servlet-name>
-    <servlet-class>com.itheima.web.OrderListServlet</servlet-class>
+    <servlet-class>com.itheima.web.order.OrderListServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>DelOrderServlet</servlet-name>
-    <servlet-class>com.itheima.web.DelOrderServlet</servlet-class>
+    <servlet-class>com.itheima.web.order.DelOrderServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>PayServlet</servlet-name>
-    <servlet-class>com.itheima.web.PayServlet</servlet-class>
+    <servlet-class>com.itheima.web.common.PayServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Callback</servlet-name>
-    <servlet-class>com.itheima.web.Callback</servlet-class>
+    <servlet-class>com.itheima.web.common.Callback</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>SaleListServlet</servlet-name>
-    <servlet-class>com.itheima.web.SaleListServlet</servlet-class>
+    <servlet-class>com.itheima.web.prod.SaleListServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>dss</servlet-name>
-    <servlet-class>com.itheima.web.dss</servlet-class>
+    <servlet-class>com.itheima.web.common.dss</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ValiNameServlet</servlet-name>
-    <servlet-class>com.itheima.web.ValiNameServlet</servlet-class>
+    <servlet-class>com.itheima.web.common.ValiNameServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UploadMsgServlet</servlet-name>
-    <servlet-class>com.itheima.web.UploadMsgServlet</servlet-class>
+    <servlet-class>com.itheima.web.common.UploadMsgServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ProdManageServlet</servlet-name>
-    <servlet-class>com.itheima.web.ProdManageServlet</servlet-class>
+    <servlet-class>com.itheima.web.prod.ProdManageServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.itheima.web.LoginServlet</servlet-class>
+    <servlet-class>com.itheima.web.account.LoginServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ProdChangeServlet</servlet-name>
-    <servlet-class>com.itheima.web.ProdChangeServlet</servlet-class>
+    <servlet-class>com.itheima.web.prod.ProdChangeServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UpdateProdServlet</servlet-name>
-    <servlet-class>com.itheima.web.UpdateProdServlet</servlet-class>
+    <servlet-class>com.itheima.web.prod.UpdateProdServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UserListServlet</servlet-name>
-    <servlet-class>com.itheima.web.UserListServlet</servlet-class>
+    <servlet-class>com.itheima.web.account.UserListServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>TfProdListServlet</servlet-name>
-    <servlet-class>com.itheima.web.TfProdListServlet</servlet-class>
+    <servlet-class>com.itheima.web.prod.TfProdListServlet</servlet-class>
   </servlet>
 
 
