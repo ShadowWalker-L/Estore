@@ -21,7 +21,7 @@ public class ProdListServlet extends HttpServlet {
 		List<Product> list = service.findAllProd();
 		//2.将所有商品信息存入request域后带到页面展示
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/prodList.jsp").forward(request, response);
+		request.getRequestDispatcher("/customer/prodList.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

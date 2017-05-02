@@ -23,7 +23,7 @@ public class ProdManageServlet extends HttpServlet {
 		List<Product> list = service.findAllProd();
 		//2.将所有商品信息存入request域后带到页面展示
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/prodManage.jsp").forward(request, response);
+		request.getRequestDispatcher("/admin/prodManage.jsp").forward(request, response);
 	}
 
 

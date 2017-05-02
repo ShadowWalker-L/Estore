@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 			msg.setFrom(new InternetAddress("admin@gzhu.cn"));
 			msg.setRecipient(RecipientType.TO, new InternetAddress(user.getEmail()));
 			msg.setSubject(user.getUsername()+",来自estore的激活邮件");
-			msg.setText(user.getUsername()+",点击如下连接激活账户,如果不能点击请复制到浏览器地址栏访问:http://www.estore.com/ActiveServlet?activecode="+user.getActivecode());
+			msg.setText(user.getUsername()+",点击如下连接激活账户,如果不能点击请复制到浏览器地址栏访问:http://localhost:8080/Estore/ActiveServlet?activecode="+user.getActivecode());
 		
 			Transport trans = session.getTransport();
 			trans.connect("admin", "admin");

@@ -23,7 +23,7 @@ public class TfProdListServlet extends HttpServlet {
 		List<Product> list = service.findAllTfProd();
 		//2.将所有商品信息存入request域后带到页面展示
 		request.setAttribute("mylist", list);
-		request.getRequestDispatcher("/tfProdList.jsp").forward(request, response);
+		request.getRequestDispatcher("/customer/tfProdList.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -26,7 +26,7 @@ public class OrderListServlet extends HttpServlet {
 		List<OrderListForm> list = service.findOrders(id);
 		//3.存入request域带到页面显示
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/orderList.jsp").forward(request, response);
+		request.getRequestDispatcher("/customer/orderList.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
