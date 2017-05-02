@@ -1,12 +1,19 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+       <%@include file="/head.html" %>
     <title>在线支付</title>
+    
   </head>
   
   <body>
+     <%@include file="/header.html" %>
+        <div id="content" class="width_setter group" role="main">
+            <%@include file="/nav0.html" %>
+                <div class="manage-account-container clearfix">
+                
         <form action="/PayServlet" method="post">
       	<table width="60%">
 			<tr>  
@@ -43,5 +50,8 @@
 			</tr>
      	</table>
    		</form>
+   		</div>
+   		</div>
+   		  <%@include file="/footer.html" %>
   </body>
 </html>

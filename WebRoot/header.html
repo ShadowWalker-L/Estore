@@ -27,8 +27,11 @@
             </c:if>
             
             <c:if test="${sessionScope.user!=null}">
+
             <div>
                 <span><span>Welcome,</span><a class="my-account" href="${pageContext.request.contextPath}/account.jsp" style="text-decoration:underline"> ${sessionScope.user.nickname}</a></span>
+            <div style="display:inline-block">
+                
                 <!-- <span th:text=" (${customer.averageHeatRatingBought})"></span> -->
                 &nbsp;|&nbsp;                               
                 <a href="${pageContext.request.contextPath}/LogoutServlet">
