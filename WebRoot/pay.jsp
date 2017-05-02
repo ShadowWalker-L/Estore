@@ -14,7 +14,7 @@
             <%@include file="/nav0.html" %>
                 <div class="manage-account-container clearfix">
                 
-        <form action="/PayServlet" method="post">
+        <form action="${pageContext.request.contextPath}/PayServlet" method="post">
       	<table width="60%">
 			<tr>  
 				<td bgcolor="#F7FEFF" colspan="4">

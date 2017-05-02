@@ -1,12 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@include file="/head.html" %>
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="/header.html" %>
+
+  <div id="content" class="width_setter group" role="main">
+    <%@include file="/nav0.html" %>
+      <div class="manage-account-container clearfix">
 <!-- 确认支付form -->
 <form action="https://www.yeepay.com/app-merchant-proxy/node" method="post">
 	<h3>订单号：${p2_Order},付款金额 ：${p3_Amt }</h3>
@@ -26,5 +32,8 @@
 	<input type="hidden" name="hmac" value="${hmac }" />
 	<input type="submit" value="确认支付" />
 </form>
+</div>
+</div>
+   <%@include file="/footer.html" %>
 </body>
 </html>
