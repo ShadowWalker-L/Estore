@@ -37,7 +37,7 @@ console.log(str);
     <font color="red">${msg }</font>
     <div class="clearfix"> 
 
-    <form id="registrationForm" class="clearfix" action="${pageContext.request.contextPath }/account/LoginServlet" method="post"> 
+    <form id="registrationForm" class="clearfix" action="${pageContext.request.contextPath }/LoginServlet" method="post"> 
    
 
      	
