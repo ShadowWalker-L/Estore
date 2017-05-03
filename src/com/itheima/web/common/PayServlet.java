@@ -26,6 +26,8 @@ public class PayServlet extends HttpServlet {
 		
 		OrderService service = BasicFactory.getFactory().getService(OrderService.class);
 		Order order= service.findOrderById(p2_Order);
+		service.changePayState(p2_Order,1);
+		
 		//String p3_Amt = order.getMoney()+"";
 		String p3_Amt = "0.01";
 		String p4_Cur = "CNY";
