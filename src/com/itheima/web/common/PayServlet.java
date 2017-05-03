@@ -40,6 +40,10 @@ public class PayServlet extends HttpServlet {
 		String hmac = PaymentUtil.buildHmac(p0_Cmd, p1_MerId, p2_Order, p3_Amt, p4_Cur, p5_Pid, p6_Pcat, p7_Pdesc, p8_Url, p9_SAF, pa_MP, pd_FrpId, pr_NeedResponse, bundle.getString("keyValue"));
 		
 		
+<<<<<<< HEAD
+=======
+		// 生成url --- url?
+>>>>>>> aa47d015264e6ed45186c6a7f2054b3a228bc247
 		request.setAttribute("pd_FrpId", pd_FrpId);
 		request.setAttribute("p0_Cmd", p0_Cmd);
 		request.setAttribute("p1_MerId", p1_MerId);

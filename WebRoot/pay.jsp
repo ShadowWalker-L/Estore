@@ -12,7 +12,7 @@
      <%@include file="/header.html" %>
         <div id="content" class="width_setter group" role="main">
             <%@include file="/nav0.html" %>
-                <div class="manage-account-container clearfix">
+        <div class="manage-account-container clearfix">
                 
         <form action="${pageContext.request.contextPath}/PayServlet" method="post">
       	<table width="60%">

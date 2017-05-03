@@ -11,22 +11,22 @@ public class PaymentUtil {
 	private static String encodingCharset = "UTF-8";
 	
 	/**
-	 * Éú³Éhmac·½·¨
+	 * ç”Ÿæˆhmacæ–¹æ³•
 	 * 
-	 * @param p0_Cmd ÒµÎñÀàĞÍ
-	 * @param p1_MerId ÉÌ»§±àºÅ
-	 * @param p2_Order ÉÌ»§¶©µ¥ºÅ
-	 * @param p3_Amt Ö§¸¶½ğ¶î
-	 * @param p4_Cur ½»Ò×±ÒÖÖ
-	 * @param p5_Pid ÉÌÆ·Ãû³Æ
-	 * @param p6_Pcat ÉÌÆ·ÖÖÀà
-	 * @param p7_Pdesc ÉÌÆ·ÃèÊö
-	 * @param p8_Url ÉÌ»§½ÓÊÕÖ§¸¶³É¹¦Êı¾İµÄµØÖ·
-	 * @param p9_SAF ËÍ»õµØÖ·
-	 * @param pa_MP ÉÌ»§À©Õ¹ĞÅÏ¢
-	 * @param pd_FrpId ÒøĞĞ±àÂë
-	 * @param pr_NeedResponse Ó¦´ğ»úÖÆ
-	 * @param keyValue ÉÌ»§ÃÜÔ¿
+	 * @param p0_Cmd ä¸šåŠ¡ç±»å‹
+	 * @param p1_MerId å•†æˆ·ç¼–å·
+	 * @param p2_Order å•†æˆ·è®¢å•å·
+	 * @param p3_Amt æ”¯ä»˜é‡‘é¢
+	 * @param p4_Cur äº¤æ˜“å¸ç§
+	 * @param p5_Pid å•†å“åç§°
+	 * @param p6_Pcat å•†å“ç§ç±»
+	 * @param p7_Pdesc å•†å“æè¿°
+	 * @param p8_Url å•†æˆ·æ¥æ”¶æ”¯ä»˜æˆåŠŸæ•°æ®çš„åœ°å€
+	 * @param p9_SAF é€è´§åœ°å€
+	 * @param pa_MP å•†æˆ·æ‰©å±•ä¿¡æ¯
+	 * @param pd_FrpId é“¶è¡Œç¼–ç 
+	 * @param pr_NeedResponse åº”ç­”æœºåˆ¶
+	 * @param keyValue å•†æˆ·å¯†é’¥
 	 * @return
 	 */
 	public static String buildHmac(String p0_Cmd,String p1_MerId,
@@ -34,52 +34,52 @@ public class PaymentUtil {
 			String p7_Pdesc,String p8_Url, String p9_SAF,String pa_MP,String pd_FrpId,
 			String pr_NeedResponse,String keyValue) {
 		StringBuilder sValue = new StringBuilder();
-		// ÒµÎñÀàĞÍ
+		// ä¸šåŠ¡ç±»å‹
 		sValue.append(p0_Cmd);
-		// ÉÌ»§±àºÅ
+		// å•†æˆ·ç¼–å·
 		sValue.append(p1_MerId);
-		// ÉÌ»§¶©µ¥ºÅ
+		// å•†æˆ·è®¢å•å·
 		sValue.append(p2_Order);
-		// Ö§¸¶½ğ¶î
+		// æ”¯ä»˜é‡‘é¢
 		sValue.append(p3_Amt);
-		// ½»Ò×±ÒÖÖ
+		// äº¤æ˜“å¸ç§
 		sValue.append(p4_Cur);
-		// ÉÌÆ·Ãû³Æ
+		// å•†å“åç§°
 		sValue.append(p5_Pid);
-		// ÉÌÆ·ÖÖÀà
+		// å•†å“ç§ç±»
 		sValue.append(p6_Pcat);
-		// ÉÌÆ·ÃèÊö
+		// å•†å“æè¿°
 		sValue.append(p7_Pdesc);
-		// ÉÌ»§½ÓÊÕÖ§¸¶³É¹¦Êı¾İµÄµØÖ·
+		// å•†æˆ·æ¥æ”¶æ”¯ä»˜æˆåŠŸæ•°æ®çš„åœ°å€
 		sValue.append(p8_Url);
-		// ËÍ»õµØÖ·
+		// é€è´§åœ°å€
 		sValue.append(p9_SAF);
-		// ÉÌ»§À©Õ¹ĞÅÏ¢
+		// å•†æˆ·æ‰©å±•ä¿¡æ¯
 		sValue.append(pa_MP);
-		// ÒøĞĞ±àÂë
+		// é“¶è¡Œç¼–ç 
 		sValue.append(pd_FrpId);
-		// Ó¦´ğ»úÖÆ
+		// åº”ç­”æœºåˆ¶
 		sValue.append(pr_NeedResponse);
 		
 		return PaymentUtil.hmacSign(sValue.toString(), keyValue);
 	}
 	
 	/**
-	 * ·µ»ØĞ£Ñéhmac·½·¨
+	 * è¿”å›æ ¡éªŒhmacæ–¹æ³•
 	 * 
-	 * @param hmac Ö§¸¶Íø¹Ø·¢À´µÄ¼ÓÃÜÑéÖ¤Âë
-	 * @param p1_MerId ÉÌ»§±àºÅ
-	 * @param r0_Cmd ÒµÎñÀàĞÍ
-	 * @param r1_Code Ö§¸¶½á¹û
-	 * @param r2_TrxId Ò×±¦Ö§¸¶½»Ò×Á÷Ë®ºÅ
-	 * @param r3_Amt Ö§¸¶½ğ¶î
-	 * @param r4_Cur ½»Ò×±ÒÖÖ
-	 * @param r5_Pid ÉÌÆ·Ãû³Æ
-	 * @param r6_Order ÉÌ»§¶©µ¥ºÅ
-	 * @param r7_Uid Ò×±¦Ö§¸¶»áÔ±ID
-	 * @param r8_MP ÉÌ»§À©Õ¹ĞÅÏ¢
-	 * @param r9_BType ½»Ò×½á¹û·µ»ØÀàĞÍ
-	 * @param keyValue ÃÜÔ¿
+	 * @param hmac æ”¯ä»˜ç½‘å…³å‘æ¥çš„åŠ å¯†éªŒè¯ç 
+	 * @param p1_MerId å•†æˆ·ç¼–å·
+	 * @param r0_Cmd ä¸šåŠ¡ç±»å‹
+	 * @param r1_Code æ”¯ä»˜ç»“æœ
+	 * @param r2_TrxId æ˜“å®æ”¯ä»˜äº¤æ˜“æµæ°´å·
+	 * @param r3_Amt æ”¯ä»˜é‡‘é¢
+	 * @param r4_Cur äº¤æ˜“å¸ç§
+	 * @param r5_Pid å•†å“åç§°
+	 * @param r6_Order å•†æˆ·è®¢å•å·
+	 * @param r7_Uid æ˜“å®æ”¯ä»˜ä¼šå‘˜ID
+	 * @param r8_MP å•†æˆ·æ‰©å±•ä¿¡æ¯
+	 * @param r9_BType äº¤æ˜“ç»“æœè¿”å›ç±»å‹
+	 * @param keyValue å¯†é’¥
 	 * @return
 	 */
 	public static boolean verifyCallback(String hmac, String p1_MerId,
@@ -87,27 +87,27 @@ public class PaymentUtil {
 			String r4_Cur, String r5_Pid, String r6_Order, String r7_Uid,
 			String r8_MP, String r9_BType, String keyValue) {
 		StringBuilder sValue = new StringBuilder();
-		// ÉÌ»§±àºÅ
+		// å•†æˆ·ç¼–å·
 		sValue.append(p1_MerId);
-		// ÒµÎñÀàĞÍ
+		// ä¸šåŠ¡ç±»å‹
 		sValue.append(r0_Cmd);
-		// Ö§¸¶½á¹û
+		// æ”¯ä»˜ç»“æœ
 		sValue.append(r1_Code);
-		// Ò×±¦Ö§¸¶½»Ò×Á÷Ë®ºÅ
+		// æ˜“å®æ”¯ä»˜äº¤æ˜“æµæ°´å·
 		sValue.append(r2_TrxId);
-		// Ö§¸¶½ğ¶î
+		// æ”¯ä»˜é‡‘é¢
 		sValue.append(r3_Amt);
-		// ½»Ò×±ÒÖÖ
+		// äº¤æ˜“å¸ç§
 		sValue.append(r4_Cur);
-		// ÉÌÆ·Ãû³Æ
+		// å•†å“åç§°
 		sValue.append(r5_Pid);
-		// ÉÌ»§¶©µ¥ºÅ
+		// å•†æˆ·è®¢å•å·
 		sValue.append(r6_Order);
-		// Ò×±¦Ö§¸¶»áÔ±ID
+		// æ˜“å®æ”¯ä»˜ä¼šå‘˜ID
 		sValue.append(r7_Uid);
-		// ÉÌ»§À©Õ¹ĞÅÏ¢
+		// å•†æˆ·æ‰©å±•ä¿¡æ¯
 		sValue.append(r8_MP);
-		// ½»Ò×½á¹û·µ»ØÀàĞÍ
+		// äº¤æ˜“ç»“æœè¿”å›ç±»å‹
 		sValue.append(r9_BType);
 		String sNewString = PaymentUtil.hmacSign(sValue.toString(), keyValue);
 		return sNewString.equals(hmac);
@@ -210,6 +210,6 @@ public class PaymentUtil {
 	}
 	
 //	public static void main(String[] args) {
-//		System.out.println(hmacSign("AnnulCard1000043252120080620160450.0http://localhost/SZXpro/callback.aspè¿?4564868265473632445648682654736324511","8UPp0KE8sq73zVP370vko7C39403rtK1YwX40Td6irH216036H27Eb12792t"));
+//		System.out.println(hmacSign("AnnulCard1000043252120080620160450.0http://localhost/SZXpro/callback.aspæ©?4564868265473632445648682654736324511","8UPp0KE8sq73zVP370vko7C39403rtK1YwX40Td6irH216036H27Eb12792t"));
 //	}
 }

@@ -40,8 +40,8 @@ public class Callback extends HttpServlet {
 			
 			if("1".equals(r9_BType)){
 				//浏览器重定向访问,不能确信真的支付成功
-				response.getWriter().write("֧���ɹ�!!!");
-				response.setHeader("refresh", "3;url=/index.jsp");
+				response.getWriter().write("支付成功!!!");
+				response.setHeader("refresh", "3;url=/user.jsp");
 				
 				OrderService service = BasicFactory.getFactory().getService(OrderService.class);
 				service.changePayState(r6_Order,1);
