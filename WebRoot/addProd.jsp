@@ -62,10 +62,10 @@
 					<select name="category">
 						<option value="电子数码">电子数码</option>
 						<option value="图书杂志">图书杂志</option>
-						<option value="床上用品">床上用品</option>
-						<option value="日用百货">日用百货</option>
+						<option value="钟表首饰">钟表首饰</option>
+						<option value="进口美食">进口美食</option>
 						<option value="大型家电">大型家电</option>
-						<option value="家用武器">家用武器</option>
+						<option value="男女服装">男女服装</option>
 					</select>
 				</td>
   			</tr>
