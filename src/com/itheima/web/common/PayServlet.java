@@ -32,7 +32,7 @@ public class PayServlet extends HttpServlet {
 		String p5_Pid = "";
 		String p6_Pcat = "";
 		String p7_Pdesc = "";
-		String p8_Url = "http://www.estore.com/Callback";
+		String p8_Url = "http://localhost:8080/Estore/Callback";
 		String p9_SAF = "0";
 		String pa_MP  = "";
 		String pd_FrpId = request.getParameter("pd_FrpId");
@@ -40,11 +40,6 @@ public class PayServlet extends HttpServlet {
 		String hmac = PaymentUtil.buildHmac(p0_Cmd, p1_MerId, p2_Order, p3_Amt, p4_Cur, p5_Pid, p6_Pcat, p7_Pdesc, p8_Url, p9_SAF, pa_MP, pd_FrpId, pr_NeedResponse, bundle.getString("keyValue"));
 		
 		
-<<<<<<< HEAD:src/com/itheima/web/PayServlet.java
-		// ����url --- url?
-=======
-		// ���url --- url?
->>>>>>> be417daefe7aabd10c002c9e971024bd898756cf:src/com/itheima/web/common/PayServlet.java
 		request.setAttribute("pd_FrpId", pd_FrpId);
 		request.setAttribute("p0_Cmd", p0_Cmd);
 		request.setAttribute("p1_MerId", p1_MerId);
