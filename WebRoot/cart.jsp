@@ -27,7 +27,10 @@
   			return false;
   		
   		}
-  		function test(){window.location.href="${pageContext.request.contextPath}/ChangeCartServlet?id="+$productId.value+"&buynum="+$nquantity.value;}
+  		
+  		function test(){
+  		window.location.href="${pageContext.request.contextPath}/ChangeCartServlet?id="+$productId.value+"&buynum="+$nquantity.value;
+  		}
 </script>
   </head>
   

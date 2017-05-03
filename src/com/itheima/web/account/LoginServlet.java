@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		request.getSession().setAttribute("user", user);
 				
 		if(user.getUsername().equals("admin")){
-			response.sendRedirect(request.getContextPath()+"/admin/admin.jsp");
+			response.sendRedirect(request.getContextPath()+"/admin.jsp");
 			return;
 		}
 			

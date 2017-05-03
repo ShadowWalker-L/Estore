@@ -25,9 +25,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	public void addOrder(Order order) {
 		try{
-			//1.Éú³É¶©µ¥
+			//1.ç”Ÿæˆè®¢å•
 			orderDao.addOrder(order);
-			//2.Éú³É¶©µ¥Ïî/¿Û³ıÉÌÆ·ÊıÁ¿
+			//2.ç”Ÿæˆè®¢å•é¡¹/æ‰£é™¤å•†å“æ•°é‡
 			for(OrderItem item : order.getList()){
 				orderDao.addOrderItem(item);
 				prodDao.delPnum(item.getProduct_id(),item.getBuynum());
@@ -42,20 +42,20 @@ public class OrderServiceImpl implements OrderService {
 		try{
 
 			List<OrderListForm> olfList = new ArrayList<OrderListForm>();
-			//1.¸ù¾İÓÃ»§id²éÑ¯Õâ¸öidÓÃ»§µÄËùÓĞ¶©µ¥
+			//1.æ ¹æ®ç”¨æˆ·idæŸ¥è¯¢è¿™ä¸ªidç”¨æˆ·çš„æ‰€æœ‰è®¢å•
 			List<Order> list = orderDao.findOrderByUserId(user_id);
-			//2.±éÀú¶©µ¥ Éú³ÉorderListForm¶ÔÏó,´æÈëListÖĞ
+			//2.éå†è®¢å• ç”ŸæˆorderListFormå¯¹è±¡,å­˜å…¥Listä¸­
 			for(Order order : list){
-				//--ÉèÖÃ¶©µ¥ĞÅÏ¢
+				//--è®¾ç½®è®¢å•ä¿¡æ¯
 				OrderListForm olf = new OrderListForm();
 				BeanUtils.copyProperties(olf, order);
-				//--ÉèÖÃÓÃ»§Ãû
+				//--è®¾ç½®ç”¨æˆ·å
 				User user = userDao.findUserById(order.getUser_id());
 				olf.setUsername(user.getUsername());
-				//--ÉèÖÃÉÌÆ·ĞÅÏ¢
-				//----²éÑ¯µ±Ç°¶©µ¥ËùÓĞ¶©µ¥Ïî
+				//--è®¾ç½®å•†å“ä¿¡æ¯
+				//----æŸ¥è¯¢å½“å‰è®¢å•æ‰€æœ‰è®¢å•é¡¹
 				List<OrderItem> itemList = orderDao.findOrderItems(order.getId());
-				//----±éÀúËùÓĞ¶©µ¥Ïî,»ñÈ¡ÉÌÆ·id,²éÕÒ¶ÔÓ¦µÄÉÌÆ·,´æÈëlist
+				//----éå†æ‰€æœ‰è®¢å•é¡¹,è·å–å•†å“id,æŸ¥æ‰¾å¯¹åº”çš„å•†å“,å­˜å…¥list
 				Map<Product,Integer> prodMap = new HashMap<Product,Integer>();
 				for(OrderItem item : itemList){
 					String prod_id = item.getProduct_id();
@@ -75,15 +75,15 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	public void delOrderByID(String id) {
-		//1.¸ù¾İid²éÑ¯³öËùÓĞ¶©µ¥Ïî
+		//1.æ ¹æ®idæŸ¥è¯¢å‡ºæ‰€æœ‰è®¢å•é¡¹
 		List<OrderItem>list = orderDao.findOrderItems(id);
-		//2.±éÀú¶©µ¥Ïî,½«¶ÔÓ¦prod_idµÄÉÌÆ·µÄ¿â´æ¼Ó»ØÈ¥
+		//2.éå†è®¢å•é¡¹,å°†å¯¹åº”prod_idçš„å•†å“çš„åº“å­˜åŠ å›å»
 		for(OrderItem item : list){
 			prodDao.addPnum(item.getProduct_id(),item.getBuynum());
 		}
-		//3.É¾³ı¶©µ¥Ïî
+		//3.åˆ é™¤è®¢å•é¡¹
 		orderDao.delOrderItem(id);
-		//4.É¾³ı¶©µ¥
+		//4.åˆ é™¤è®¢å•
 		orderDao.delOrder(id);
 	}
 

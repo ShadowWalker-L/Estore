@@ -87,7 +87,7 @@
     <div class="clearfix">
         <div class="group order-info">
             <h3><span>电子邮箱地址</span></h3>
-            <p>160109794@qq.com</p>
+            <p>${user.email }</p>
         </div>
     </div>
 </div>
