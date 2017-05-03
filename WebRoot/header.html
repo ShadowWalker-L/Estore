@@ -27,11 +27,16 @@
             </c:if>
             
             <c:if test="${sessionScope.user!=null}">
+<<<<<<< HEAD
 
             <div>
                 <span><span>Welcome,</span><a class="my-account" href="${pageContext.request.contextPath}/account.jsp" style="text-decoration:underline"> ${sessionScope.user.nickname}</a></span>
             <div style="display:inline-block">
                 
+=======
+            <div>
+                <span><span>Welcome,</span><a class="my-account" href="${pageContext.request.contextPath}/account.jsp" style="text-decoration:underline"> ${sessionScope.user.username}</a></span>
+>>>>>>> parent of 92fd1b4... 1.modified header.html,pay.jsp
                 <!-- <span th:text=" (${customer.averageHeatRatingBought})"></span> -->
                 &nbsp;|&nbsp;                               
                 <a href="${pageContext.request.contextPath}/LogoutServlet">
