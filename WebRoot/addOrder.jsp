@@ -29,7 +29,7 @@
         <thead>
         <tr>
             <th>&nbsp;</th>
-            <th align="left"><span>件</span></th>
+            <th align="left"><span>商品信息</span></th>
             <th><span>数量</span></th>
             <th> <span>价钱</span></th>
             <th> <span>总共节省</span></th>

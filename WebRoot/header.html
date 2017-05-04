@@ -14,7 +14,7 @@
 
             
             <c:if test="${sessionScope.user==null}">
-            <div>
+            <div style="display:inline-block">
                 <a class="account" href="${pageContext.request.contextPath}/login.jsp">
                     <span>Login</span>
                 </a>
@@ -28,7 +28,7 @@
             
             <c:if test="${sessionScope.user!=null}">
 
-            <div>
+            <div style="display:inline-block">
                 <span><span>Welcome,</span><a class="my-account" href="${pageContext.request.contextPath}/account.jsp" style="text-decoration:underline"> ${sessionScope.user.nickname}</a></span>
                 
                 <!-- <span th:text=" (${customer.averageHeatRatingBought})"></span> -->

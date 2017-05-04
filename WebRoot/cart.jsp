@@ -22,8 +22,8 @@
   				return false;
   			
   			}
-  		    
-  			window.location.href="${pageContext.request.contextPath}/ChangeCartServlet?id="+$productId.value+"&buynum="+$nquantity.value;
+  			alert("为什么不起作用!");
+  			window.location.href="${pageContext.request.contextPath}/ChangeCartServlet?id="+$("#productId").val()+"&buynum="+$("#quantity").val();
   			return false;
   		
   		}

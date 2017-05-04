@@ -37,9 +37,9 @@
             
             <td align="center">
                 <form method="POST" onsubmit="return changeNum()" action="${pageContext.request.contextPath}/cart/updateQuantity">
-                    <input type="hidden" name="productId" value="${entry.key.id }" />
+                    <input type="hidden" id="productId" value="${entry.key.id }" />
                     <input type="number" id="quantity" name="quantity" class="quantityInput" style="width:30px" value="${entry.value }" maxlength="3" /><br />
-                    <input type="button" class="updateQuantity" value="update" onclick="changeNum(${entry.value })" />
+                    <input type="button" class="updateQuantity" value="update" onclick="changeNum(${entry.value });return false;" />
                 </form>
                 <a class="cartLinkBtn remove_from_cart" href="${pageContext.request.contextPath}/DelCartServlet?id=${entry.key.id }"><span>Remove</span></a>
             </td>
