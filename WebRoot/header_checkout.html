@@ -10,7 +10,7 @@
                         <th>Shipping</th>
                     </tr>
                     <tr>
-                        <td>$4.99</td>
+                        <td><span id="subtotal"></span>RMB</td>
                         <td class="discount">---</td>
                         
                         <td>0.00RMB</td>
@@ -21,11 +21,11 @@
                 </div>
                 <div class="checkout_info_right">
                     <h3>Current Total</h3>
-                    <div id="checkout_total">${money}RMB</div>
+                    <div id="checkout_total"><span id="total"></span>RMB</div>
                 </div>
                 <div class="clearfix"></div>
             </div>
-           <div id="logo"><img src="img/the-heat-clinic-logo-initernal.jpg" style="margin-top:10px;"></img></div>
+           <div id="logo"><a href="${pageContext.request.contextPath}/user.jsp"><img src="img/the-heat-clinic-logo-initernal.jpg" style="margin-top:10px;"></img></a></div>
         </div>
     </div>
 </header>

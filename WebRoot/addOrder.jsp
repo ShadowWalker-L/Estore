@@ -5,6 +5,7 @@
   <head>
   <%@include file="/head.html" %>
   <script  type="text/javascript" src="js/jquery-1.4.2.js"></script>
+  
   </head>
   <body class="locale-en_US">
     <div id="notification_bar"></div>
@@ -36,10 +37,10 @@
             <th><span>全部</span></th>
         </tr>
         </thead>
+       
         <tbody>
-        <c:set var="money" value="0" />
+        <c:set var="money1" value="0" />
 		<c:forEach items="${sessionScope.cartmap}" var="entry">
-			
         <tr id="productRow252">
              <td>
                  <img src="${pageContext.request.contextPath}/ImgServlet?imgurl=${entry.key.imgurls }" width="60" alt="${entry.key.name}+'_picture'"/>
@@ -67,11 +68,12 @@
             <td align="center">${entry.key.price }RMB</td>
             <td align="center">---</td>
             <td align="center" class="value">${entry.key.price * entry.value }RMB</td>
-             <c:set var="money" value="${money + entry.key.price * entry.value }"/>
+            <c:set var="money1" value="${money1 + entry.key.price * entry.value }"/>
         </tr>
         </c:forEach>
         </tbody>
     </table>
+    <input type="hidden" value="${money1}" id="summary_only"></input>
 </div>
 
 <div class="clearfix"></div>
@@ -129,7 +131,15 @@
     <input type="hidden" name="csrfToken" value="4TRB-PZ59-UA3G-YBMW-2WSE-SV64-UTIQ-LHZP" /></form>
 </div>
                 
-  	
+
   <%@include file="/footer.html" %>
+  <script type="text/javascript">
+  $(document).ready(function (){ 
+	  var summary_only=$("#summary_only").val();
+	  document.getElementById("subtotal").innerText=summary_only;
+	  document.getElementById("total").innerText=summary_only;
+	  alert(summary_only);
+	  });
+  </script>
   </body>
 </html>
