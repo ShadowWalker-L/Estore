@@ -1,0 +1,40 @@
+*{
+  margin:0;
+  padding:0;
+  list-style:none;
+  border:none;
+}
+.rotation {
+  position:relative;
+  margin:0 0;
+  width:700px;
+  height:400px;
+}
+.rotation a{
+position:absolute;
+
+}
+
+.rotation a img{
+  width:100%;
+}
+.rotation ul{
+  position:absolute;
+  z-index:5;
+  top:300px;
+  left:500px;
+}
+.rotation ul li {
+  margin:5px;
+  font-size:22px;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  text-align:center;
+  background:#ffffff;
+  float:left;
+  cursor:pointer;
+}
+.rotation ul li.selected{
+background:#FF4040;
+}
