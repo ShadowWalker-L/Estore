@@ -54,6 +54,7 @@ public class AddOrderServlet extends HttpServlet {
 			service.addOrder(order);
 			
 			cartmap.clear();
+			request.getSession().setAttribute("itemCount", 0);
 			
 			response.getWriter().write("订单生成成功!请去支付!");
 			response.setHeader("refresh", "3;url=/Estore/user.jsp");
