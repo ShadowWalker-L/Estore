@@ -20,6 +20,13 @@ public class ChangeCartServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		Product prod = service.findProdById(id);
 		Map<Product,Integer> cartmap = (Map<Product, Integer>) request.getSession().getAttribute("cartmap");
+		
+		
+		Integer oldVal=cartmap.get(prod);
+		Integer itemCount=(Integer) request.getSession().getAttribute("itemCount");
+		itemCount+=Integer.parseInt(request.getParameter("buynum"))-oldVal;
+		request.getSession().setAttribute("itemCount", itemCount);
+		
 		cartmap.put(prod, Integer.parseInt(request.getParameter("buynum")));
 		response.sendRedirect(request.getContextPath()+"/cart.jsp");
 	}

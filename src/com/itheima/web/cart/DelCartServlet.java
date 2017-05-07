@@ -22,7 +22,14 @@ public class DelCartServlet extends HttpServlet {
 		Product prod = service.findProdById(id);
 		//2.获取购物车,删除该商品
 		Map<Product,Integer> cartmap = (Map<Product, Integer>) request.getSession().getAttribute("cartmap");
-		cartmap.remove(prod);
+		
+	    Integer oldVal=cartmap.get(prod);
+	    Integer itemCount=(Integer) request.getSession().getAttribute("itemCount");
+	    itemCount-=oldVal;
+	    request.getSession().setAttribute("itemCount", itemCount);
+		
+	    
+	    cartmap.remove(prod);
 		//3.重定向回到购物车页面
 		response.sendRedirect(request.getContextPath()+"/cart.jsp");
 	}

@@ -46,8 +46,8 @@
                 &nbsp; 
                 <span id="headerCartItemWordSingular_i18n" style="display: none;">item</span>
                 <span id="headerCartItemWordPlural_i18n" style="display: none;" >item</span>
-                <span class="headerCartItemsCount">0</span>
-                <span class="headerCartItemsCountWord">item</span>
+                <span class="headerCartItemsCount"><c:if test="${sessionScope.itemCount!=null}">${sessionScope.itemCount}</c:if><c:if test="${sessionScope.itemCount==null}">0</c:if></span>
+                <span class="headerCartItemsCountWord"><c:if test="${sessionScope.itemCount==null||sessionScope.itemCount<=1}">item</c:if><c:if test="${sessionScope.itemCount>1}">items</c:if></span>
             </a>
             </c:if>
 

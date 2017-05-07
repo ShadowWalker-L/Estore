@@ -1,6 +1,7 @@
 package com.itheima.web.cart;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -24,6 +25,18 @@ public class AddCartServlet extends HttpServlet {
 		}else{
 			Map<Product,Integer> cartmap = (Map<Product, Integer>) request.getSession().getAttribute("cartmap");
 			cartmap.put(prod, cartmap.containsKey(prod)?cartmap.get(prod)+1 : 1);
+			//calculate the items in cart
+			Collection<Integer> values=cartmap.values();
+			Integer itemCount=(Integer) request.getSession().getAttribute("itemCount");
+			if (itemCount == null) {
+				itemCount=0;
+				for (int count : values) {
+					itemCount+=count;
+				}
+				request.getSession().setAttribute("itemCount", itemCount);
+			}else{
+				request.getSession().setAttribute("itemCount", itemCount+1);
+			}
 		}
 		response.sendRedirect(request.getContextPath()+"/cart.jsp");
 	}
