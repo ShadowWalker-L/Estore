@@ -21,7 +21,7 @@ public class DelOrderServlet extends HttpServlet {
 		service.delOrderByID(id);
 		//3.回到订单列表页面
 		response.getWriter().write("订单删除成功!!!");
-		response.setHeader("Refresh", "3;url=/OrderListServlet");
+		response.setHeader("Refresh", "3;url=/Estore/OrderListServlet");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
