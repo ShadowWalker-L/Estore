@@ -73,7 +73,8 @@
   			<tr>
   				<td>免税商品</td>
   				<td>
-  				<input type="text" name="taxFree"/>
+  				<input type="radio" name="taxFree" value="1" checked>是
+				<input type="radio" name="taxFree" value="0">否
   				</td>
   			</tr>
   			
