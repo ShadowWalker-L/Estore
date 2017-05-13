@@ -90,4 +90,17 @@ public class ProdDaoImpl implements ProdDao {
 		}
 	}
 
+	@Override
+	public void delProd(String id) {
+		String sql = "delete from products where id = ?";
+		try{
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql,id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+	}
+
 }

@@ -27,5 +27,10 @@ public class ProdServiceImpl implements ProdService {
 	public List<Product> findAllTfProd() {
 		return dao.findAllTfProd();
 	}
+	@Override
+	public void delProdByID(String id) {
+		dao.delProd(id);
+	}
+	
 
 }

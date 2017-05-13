@@ -33,5 +33,7 @@ public interface ProdService  extends Service{
 	Product findProdById(String id);
 	
 	void changeProd(String product_id, double price, int pnum);
+	
+	void delProdByID(String id);
 
 }

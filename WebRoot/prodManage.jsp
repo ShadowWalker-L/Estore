@@ -22,7 +22,7 @@
   				${prod.price }<br>
   				${prod.category }<br>
   			</td>
-  			<td width="40%">
+  			<td width="20%">
   				<c:if test="${prod.pnum>0}">
   					<font color="blue">存量:${prod.pnum }</font>
   				</c:if>
@@ -30,6 +30,11 @@
   					<font color="red">缺货</font>
   				</c:if>
   			</td>
+  			
+  			<td width="20%">
+  				<a href="${pageContext.request.contextPath}/DelProdServlet?id=${prod.id }">删除</a>
+  			</td>
+  			
   		</tr>
 		<tr>
 			<td colspan="3"><hr></td>

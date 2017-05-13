@@ -164,6 +164,11 @@
     <servlet-name>TfProdListServlet</servlet-name>
     <servlet-class>com.itheima.web.prod.TfProdListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DelProdServlet</servlet-name>
+    <servlet-class>com.itheima.web.prod.DelProdServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -299,6 +304,10 @@
   <servlet-mapping>
     <servlet-name>TfProdListServlet</servlet-name>
     <url-pattern>/TfProdListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelProdServlet</servlet-name>
+    <url-pattern>/DelProdServlet</url-pattern>
   </servlet-mapping>
 	<!-- Servlet配置结束 -->
 	
