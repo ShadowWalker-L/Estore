@@ -18,7 +18,7 @@ public class ActiveServlet extends HttpServlet {
 		String activecode = request.getParameter("activecode");
 		service.acitveUser(activecode);
 		response.getWriter().write("恭喜您激活成功,3秒后回到主页....");
-		response.setHeader("Refresh", "3;url=/index.jsp");
+		response.setHeader("Refresh", "3;url=/Estore/index.jsp");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
